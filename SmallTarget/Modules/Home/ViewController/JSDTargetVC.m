@@ -9,6 +9,7 @@
 #import "JSDTargetVC.h"
 #import "JSDCalenderHeaderView.h"
 #import "JSDtargetCell.h"
+#import "JSDTargetDetailVC.h"
 
 static NSString* const kJSDTargetCell = @"cell";
 
@@ -112,6 +113,11 @@ static NSString* const kJSDTargetCell = @"cell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    JSDTargetDetailVC* targetDetailVC = [[JSDTargetDetailVC alloc] init];
+    
+    [self.navigationController pushViewController:targetDetailVC animated:YES];
 }
 
 #pragma mark -- JSDCalenderHeaderViewDelegate

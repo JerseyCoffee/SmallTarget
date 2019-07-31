@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JSDTargetDetailVC">
             <connections>
                 <outlet property="allFinishView" destination="fxa-1p-upe" id="w5b-9K-mdD"/>
+                <outlet property="calendarView" destination="fta-nt-ty3" id="Q63-U8-DoU"/>
                 <outlet property="monthFinishView" destination="x98-5C-qV1" id="BgX-v2-ZmR"/>
                 <outlet property="sayingLabel" destination="AbF-Y9-nbE" id="bc4-w3-WSm"/>
                 <outlet property="scrollContentView" destination="Rmh-Id-P7N" id="hEE-8D-4U5"/>
@@ -86,6 +87,13 @@
                                         <constraint firstItem="EwG-4i-6WF" firstAttribute="centerX" secondItem="x98-5C-qV1" secondAttribute="centerX" id="mnu-l1-2Hz"/>
                                     </constraints>
                                 </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fta-nt-ty3">
+                                    <rect key="frame" x="15" y="165.5" width="384" height="366"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="366" id="ubj-PM-dVS"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -93,11 +101,15 @@
                                 <constraint firstItem="x98-5C-qV1" firstAttribute="leading" secondItem="fxa-1p-upe" secondAttribute="trailing" constant="10" id="Lx7-ps-lkx"/>
                                 <constraint firstItem="fxa-1p-upe" firstAttribute="leading" secondItem="AbF-Y9-nbE" secondAttribute="leading" id="QPy-BI-zed"/>
                                 <constraint firstItem="AbF-Y9-nbE" firstAttribute="leading" secondItem="Rmh-Id-P7N" secondAttribute="leading" constant="15" id="TS4-6U-jlF"/>
+                                <constraint firstItem="fta-nt-ty3" firstAttribute="top" secondItem="fxa-1p-upe" secondAttribute="bottom" constant="15" id="UrM-ts-sjx"/>
                                 <constraint firstAttribute="trailing" secondItem="x98-5C-qV1" secondAttribute="trailing" constant="15" id="gWC-FZ-nVu"/>
                                 <constraint firstItem="fxa-1p-upe" firstAttribute="top" secondItem="AbF-Y9-nbE" secondAttribute="bottom" constant="25" id="jLi-9t-MD3"/>
+                                <constraint firstItem="fta-nt-ty3" firstAttribute="trailing" secondItem="x98-5C-qV1" secondAttribute="trailing" id="kRL-Gr-Nk5"/>
                                 <constraint firstItem="x98-5C-qV1" firstAttribute="height" secondItem="fxa-1p-upe" secondAttribute="height" id="myF-i1-Qo8"/>
                                 <constraint firstItem="x98-5C-qV1" firstAttribute="width" secondItem="fxa-1p-upe" secondAttribute="width" id="ocl-ZD-Dne"/>
+                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="fta-nt-ty3" secondAttribute="bottom" constant="30" id="qSw-VI-wN0"/>
                                 <constraint firstItem="x98-5C-qV1" firstAttribute="top" secondItem="fxa-1p-upe" secondAttribute="top" id="rrz-Nf-rko"/>
+                                <constraint firstItem="fta-nt-ty3" firstAttribute="leading" secondItem="fxa-1p-upe" secondAttribute="leading" id="z2L-DU-Cw1"/>
                             </constraints>
                         </view>
                     </subviews>

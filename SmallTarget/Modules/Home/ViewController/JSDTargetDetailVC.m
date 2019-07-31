@@ -8,6 +8,8 @@
 
 #import "JSDTargetDetailVC.h"
 
+#import "JSDCalendarVC.h"
+
 @interface JSDTargetDetailVC ()
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -16,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *sayingLabel;
 @property (weak, nonatomic) IBOutlet UIView *allFinishView;
 @property (weak, nonatomic) IBOutlet UIView *monthFinishView;
+@property (weak, nonatomic) IBOutlet UIView *calendarView;
+@property (strong, nonatomic) JSDCalendarVC *calendarVC;
 
 @end
 
@@ -79,6 +83,13 @@
     self.monthFinishView.layer.shadowRadius = 6;
     self.monthFinishView.layer.cornerRadius = 10;
     
+    
+    [self addChildViewController:self.calendarVC];
+    [self.calendarView addSubview:self.calendarVC.view];
+    [self.calendarVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(0);
+    }];
+    [self.calendarVC didMoveToParentViewController:self];
 }
 
 - (void)reloadView {
@@ -102,6 +113,14 @@
 }
 
 #pragma mark - 7.GET & SET
+
+- (JSDCalendarVC *)calendarVC {
+    
+    if (!_calendarVC) {
+        _calendarVC = [[JSDCalendarVC alloc] init];
+    }
+    return _calendarVC;
+}
 
 @end
 
