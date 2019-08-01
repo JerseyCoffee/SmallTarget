@@ -1,16 +1,16 @@
 //
 //  JSDMyCenterVC.h
-//  SmallTarget
+//  JerseyCoffee
 //
-//  Created by Jersey on 2019/7/31.
-//  Copyright © 2019 JerseyCafe. All rights reserved.
+//  Created by Jersey on 2019/7/23.
+//  Copyright © 2019 jerseyCafe. All rights reserved.
 //
 
-#import "JSDBaseViewController.h"
+#import "MDCCollectionViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JSDMyCenterVC : JSDBaseViewController
+@interface JSDMyCenterVC : MDCCollectionViewController
 
 @end
 

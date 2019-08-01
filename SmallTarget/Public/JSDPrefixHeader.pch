@@ -20,5 +20,8 @@
 #import <AFNetworking.h>
 #import <MaterialTextFields.h>
 #import <MaterialButtons.h>
+#import <MaterialSnackbar.h>
+#import <MaterialCollections.h>
+#import <UINavigationController+FDFullscreenPopGesture.h>
 
 #endif /* JSDPrefixHeader_pch */

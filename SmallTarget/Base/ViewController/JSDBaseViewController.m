@@ -8,8 +8,6 @@
 
 #import "JSDBaseViewController.h"
 
-#import <UINavigationController+FDFullscreenPopGesture.h>
-
 @interface JSDBaseViewController ()
 
 @end

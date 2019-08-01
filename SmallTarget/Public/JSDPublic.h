@@ -22,5 +22,6 @@
 #import "JSDAddTargetVC.h"
 #import "JSDBaseViewController.h"
 #import "JSDBaseNavigationController.h"
+#import "JSDBaseCollectionViewController.h"
 
 #endif /* JSDPublic_h */

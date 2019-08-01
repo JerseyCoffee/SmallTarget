@@ -22,7 +22,6 @@
 		55727B4222F13A4500559B72 /* JSDBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55727B4122F13A4500559B72 /* JSDBaseModel.m */; };
 		55727B4522F13A5000559B72 /* JSDBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55727B4422F13A5000559B72 /* JSDBaseView.m */; };
 		55727B4822F13AC600559B72 /* JSDTargetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55727B4722F13AC600559B72 /* JSDTargetVC.m */; };
-		55727B4B22F13B7D00559B72 /* JSDMyCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55727B4A22F13B7D00559B72 /* JSDMyCenterVC.m */; };
 		55727B4E22F13E6700559B72 /* JSDAddTargetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55727B4D22F13E6700559B72 /* JSDAddTargetVC.m */; };
 		55727B5522F1461D00559B72 /* JSDAddTargetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55727B5422F1461D00559B72 /* JSDAddTargetVC.xib */; };
 		55727B5922F153D300559B72 /* JSDStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55727B5822F153D300559B72 /* JSDStackView.m */; };
@@ -36,6 +35,24 @@
 		55727B7022F1A4B300559B72 /* JSDTargetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55727B6E22F1A4B300559B72 /* JSDTargetCell.xib */; };
 		55727B7422F28C1B00559B72 /* JSDTargetHeaderReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55727B7222F28C1B00559B72 /* JSDTargetHeaderReusableView.m */; };
 		55727B7522F28C1B00559B72 /* JSDTargetHeaderReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55727B7322F28C1B00559B72 /* JSDTargetHeaderReusableView.xib */; };
+		55727C5722F29E0A00559B72 /* JSDTargetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55727C5522F29E0A00559B72 /* JSDTargetTableViewCell.m */; };
+		55727C5822F29E0A00559B72 /* JSDTargetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55727C5622F29E0A00559B72 /* JSDTargetTableViewCell.xib */; };
+		55727C7022F2A54700559B72 /* JSDAboutUSVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55727C5B22F2A54700559B72 /* JSDAboutUSVC.m */; };
+		55727C7122F2A54700559B72 /* JSDAbountViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55727C5C22F2A54700559B72 /* JSDAbountViewModel.m */; };
+		55727C7222F2A54700559B72 /* JSDFeedBacksVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55727C6122F2A54700559B72 /* JSDFeedBacksVC.xib */; };
+		55727C7322F2A54700559B72 /* JSDFeedBacksVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55727C6222F2A54700559B72 /* JSDFeedBacksVC.m */; };
+		55727C7422F2A54700559B72 /* JSDMyCenterViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55727C6422F2A54700559B72 /* JSDMyCenterViewModel.m */; };
+		55727C7522F2A54700559B72 /* JSDCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55727C6822F2A54700559B72 /* JSDCollectionViewCell.xib */; };
+		55727C7622F2A54700559B72 /* JSDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55727C6922F2A54700559B72 /* JSDCollectionViewCell.m */; };
+		55727C7822F2A54700559B72 /* JSDMyCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55727C6D22F2A54700559B72 /* JSDMyCenterVC.m */; };
+		55727C7C22F2A71F00559B72 /* JSDMyCenterHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55727C7B22F2A71F00559B72 /* JSDMyCenterHeaderView.m */; };
+		55727C7E22F2A72800559B72 /* JSDMyCenterHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55727C7D22F2A72800559B72 /* JSDMyCenterHeaderView.xib */; };
+		55727C8222F2AF4000559B72 /* JSDSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 55727C8122F2AF4000559B72 /* JSDSettingVC.m */; };
+		55727C8822F2B0D300559B72 /* JSDSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55727C8622F2B0D300559B72 /* JSDSettingCell.m */; };
+		55727C8922F2B0D300559B72 /* JSDSettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55727C8722F2B0D300559B72 /* JSDSettingCell.xib */; };
+		55727C8C22F2B16E00559B72 /* JSDSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 55727C8B22F2B16E00559B72 /* JSDSwitch.m */; };
+		55727C8F22F2B28100559B72 /* JSDBaseCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55727C8E22F2B28100559B72 /* JSDBaseCollectionViewController.m */; };
+		55727C9222F2B43F00559B72 /* JSDSettingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55727C9122F2B43F00559B72 /* JSDSettingViewModel.m */; };
 		601E98E822F1C87A008CBE2B /* JSDCalendarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 601E98E722F1C87A008CBE2B /* JSDCalendarVC.m */; };
 		6D47F23C03E4AF13F09EFAAC /* libPods-SmallTarget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7039A737FF2EB919ECD34346 /* libPods-SmallTarget.a */; };
 /* End PBXBuildFile section */
@@ -76,8 +93,6 @@
 		55727B4422F13A5000559B72 /* JSDBaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDBaseView.m; sourceTree = "<group>"; };
 		55727B4622F13AC600559B72 /* JSDTargetVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDTargetVC.h; sourceTree = "<group>"; };
 		55727B4722F13AC600559B72 /* JSDTargetVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDTargetVC.m; sourceTree = "<group>"; };
-		55727B4922F13B7D00559B72 /* JSDMyCenterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDMyCenterVC.h; sourceTree = "<group>"; };
-		55727B4A22F13B7D00559B72 /* JSDMyCenterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDMyCenterVC.m; sourceTree = "<group>"; };
 		55727B4C22F13E6700559B72 /* JSDAddTargetVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDAddTargetVC.h; sourceTree = "<group>"; };
 		55727B4D22F13E6700559B72 /* JSDAddTargetVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDAddTargetVC.m; sourceTree = "<group>"; };
 		55727B5422F1461D00559B72 /* JSDAddTargetVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JSDAddTargetVC.xib; sourceTree = "<group>"; };
@@ -100,6 +115,37 @@
 		55727B7122F28C1B00559B72 /* JSDTargetHeaderReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDTargetHeaderReusableView.h; sourceTree = "<group>"; };
 		55727B7222F28C1B00559B72 /* JSDTargetHeaderReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDTargetHeaderReusableView.m; sourceTree = "<group>"; };
 		55727B7322F28C1B00559B72 /* JSDTargetHeaderReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JSDTargetHeaderReusableView.xib; sourceTree = "<group>"; };
+		55727C5422F29E0A00559B72 /* JSDTargetTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDTargetTableViewCell.h; sourceTree = "<group>"; };
+		55727C5522F29E0A00559B72 /* JSDTargetTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDTargetTableViewCell.m; sourceTree = "<group>"; };
+		55727C5622F29E0A00559B72 /* JSDTargetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JSDTargetTableViewCell.xib; sourceTree = "<group>"; };
+		55727C5B22F2A54700559B72 /* JSDAboutUSVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDAboutUSVC.m; sourceTree = "<group>"; };
+		55727C5C22F2A54700559B72 /* JSDAbountViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDAbountViewModel.m; sourceTree = "<group>"; };
+		55727C5D22F2A54700559B72 /* JSDAboutUSVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDAboutUSVC.h; sourceTree = "<group>"; };
+		55727C5E22F2A54700559B72 /* JSDAbountViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDAbountViewModel.h; sourceTree = "<group>"; };
+		55727C6022F2A54700559B72 /* JSDFeedBacksVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDFeedBacksVC.h; sourceTree = "<group>"; };
+		55727C6122F2A54700559B72 /* JSDFeedBacksVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSDFeedBacksVC.xib; sourceTree = "<group>"; };
+		55727C6222F2A54700559B72 /* JSDFeedBacksVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDFeedBacksVC.m; sourceTree = "<group>"; };
+		55727C6422F2A54700559B72 /* JSDMyCenterViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDMyCenterViewModel.m; sourceTree = "<group>"; };
+		55727C6522F2A54700559B72 /* JSDMyCenterViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDMyCenterViewModel.h; sourceTree = "<group>"; };
+		55727C6722F2A54700559B72 /* JSDCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDCollectionViewCell.h; sourceTree = "<group>"; };
+		55727C6822F2A54700559B72 /* JSDCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSDCollectionViewCell.xib; sourceTree = "<group>"; };
+		55727C6922F2A54700559B72 /* JSDCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDCollectionViewCell.m; sourceTree = "<group>"; };
+		55727C6B22F2A54700559B72 /* JSDMyCenterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDMyCenterVC.h; sourceTree = "<group>"; };
+		55727C6D22F2A54700559B72 /* JSDMyCenterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDMyCenterVC.m; sourceTree = "<group>"; };
+		55727C7A22F2A71F00559B72 /* JSDMyCenterHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDMyCenterHeaderView.h; sourceTree = "<group>"; };
+		55727C7B22F2A71F00559B72 /* JSDMyCenterHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDMyCenterHeaderView.m; sourceTree = "<group>"; };
+		55727C7D22F2A72800559B72 /* JSDMyCenterHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JSDMyCenterHeaderView.xib; sourceTree = "<group>"; };
+		55727C8022F2AF4000559B72 /* JSDSettingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDSettingVC.h; sourceTree = "<group>"; };
+		55727C8122F2AF4000559B72 /* JSDSettingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDSettingVC.m; sourceTree = "<group>"; };
+		55727C8522F2B0D300559B72 /* JSDSettingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDSettingCell.h; sourceTree = "<group>"; };
+		55727C8622F2B0D300559B72 /* JSDSettingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDSettingCell.m; sourceTree = "<group>"; };
+		55727C8722F2B0D300559B72 /* JSDSettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JSDSettingCell.xib; sourceTree = "<group>"; };
+		55727C8A22F2B16E00559B72 /* JSDSwitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDSwitch.h; sourceTree = "<group>"; };
+		55727C8B22F2B16E00559B72 /* JSDSwitch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDSwitch.m; sourceTree = "<group>"; };
+		55727C8D22F2B28100559B72 /* JSDBaseCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDBaseCollectionViewController.h; sourceTree = "<group>"; };
+		55727C8E22F2B28100559B72 /* JSDBaseCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDBaseCollectionViewController.m; sourceTree = "<group>"; };
+		55727C9022F2B43F00559B72 /* JSDSettingViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDSettingViewModel.h; sourceTree = "<group>"; };
+		55727C9122F2B43F00559B72 /* JSDSettingViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDSettingViewModel.m; sourceTree = "<group>"; };
 		601E98E622F1C87A008CBE2B /* JSDCalendarVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDCalendarVC.h; sourceTree = "<group>"; };
 		601E98E722F1C87A008CBE2B /* JSDCalendarVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDCalendarVC.m; sourceTree = "<group>"; };
 		7039A737FF2EB919ECD34346 /* libPods-SmallTarget.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmallTarget.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,6 +236,8 @@
 			children = (
 				55727B2422F1320100559B72 /* JSDBaseViewController.h */,
 				55727B2522F1320100559B72 /* JSDBaseViewController.m */,
+				55727C8D22F2B28100559B72 /* JSDBaseCollectionViewController.h */,
+				55727C8E22F2B28100559B72 /* JSDBaseCollectionViewController.m */,
 				55727B3D22F1399600559B72 /* JSDBaseNavigationController.h */,
 				55727B3E22F1399600559B72 /* JSDBaseNavigationController.m */,
 			);
@@ -211,9 +259,9 @@
 		55727B0922F12D7700559B72 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				55727C5922F2A54700559B72 /* My */,
 				55727B0A22F12D7700559B72 /* Home */,
 				55727B2822F1324000559B72 /* Add */,
-				55727B2722F1323700559B72 /* My */,
 				55727B0E22F12D7700559B72 /* TabBar */,
 			);
 			path = Modules;
@@ -240,6 +288,9 @@
 			isa = PBXGroup;
 			children = (
 				55727BF322F295B400559B72 /* TargetDetail */,
+				55727C5422F29E0A00559B72 /* JSDTargetTableViewCell.h */,
+				55727C5522F29E0A00559B72 /* JSDTargetTableViewCell.m */,
+				55727C5622F29E0A00559B72 /* JSDTargetTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -249,11 +300,7 @@
 			children = (
 				55727B4622F13AC600559B72 /* JSDTargetVC.h */,
 				55727B4722F13AC600559B72 /* JSDTargetVC.m */,
-				55727B6722F1985900559B72 /* JSDTargetDetailVC.h */,
-				55727B6822F1985900559B72 /* JSDTargetDetailVC.m */,
-				55727B6A22F19BC100559B72 /* JSDTargetDetailVC.xib */,
-				601E98E622F1C87A008CBE2B /* JSDCalendarVC.h */,
-				601E98E722F1C87A008CBE2B /* JSDCalendarVC.m */,
+				55727BF422F29D6F00559B72 /* TargetDetail */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -318,16 +365,6 @@
 			path = Style;
 			sourceTree = "<group>";
 		};
-		55727B2722F1323700559B72 /* My */ = {
-			isa = PBXGroup;
-			children = (
-				55727B2E22F1326400559B72 /* Model */,
-				55727B2D22F1326400559B72 /* View */,
-				55727B2C22F1326400559B72 /* ViewController */,
-			);
-			path = My;
-			sourceTree = "<group>";
-		};
 		55727B2822F1324000559B72 /* Add */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,29 +397,6 @@
 				55727B5422F1461D00559B72 /* JSDAddTargetVC.xib */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		55727B2C22F1326400559B72 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				55727B4922F13B7D00559B72 /* JSDMyCenterVC.h */,
-				55727B4A22F13B7D00559B72 /* JSDMyCenterVC.m */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		55727B2D22F1326400559B72 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		55727B2E22F1326400559B72 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		55727B3522F134BC00559B72 /* UIImage */ = {
@@ -438,6 +452,115 @@
 				55727B7322F28C1B00559B72 /* JSDTargetHeaderReusableView.xib */,
 			);
 			path = TargetDetail;
+			sourceTree = "<group>";
+		};
+		55727BF422F29D6F00559B72 /* TargetDetail */ = {
+			isa = PBXGroup;
+			children = (
+				55727B6722F1985900559B72 /* JSDTargetDetailVC.h */,
+				55727B6822F1985900559B72 /* JSDTargetDetailVC.m */,
+				55727B6A22F19BC100559B72 /* JSDTargetDetailVC.xib */,
+				601E98E622F1C87A008CBE2B /* JSDCalendarVC.h */,
+				601E98E722F1C87A008CBE2B /* JSDCalendarVC.m */,
+			);
+			path = TargetDetail;
+			sourceTree = "<group>";
+		};
+		55727C5922F2A54700559B72 /* My */ = {
+			isa = PBXGroup;
+			children = (
+				55727C7F22F2AF2D00559B72 /* Setting */,
+				55727C5A22F2A54700559B72 /* About */,
+				55727C5F22F2A54700559B72 /* Feedback */,
+				55727C6322F2A54700559B72 /* Model */,
+				55727C6622F2A54700559B72 /* View */,
+				55727C6A22F2A54700559B72 /* ViewController */,
+			);
+			path = My;
+			sourceTree = "<group>";
+		};
+		55727C5A22F2A54700559B72 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				55727C5E22F2A54700559B72 /* JSDAbountViewModel.h */,
+				55727C5C22F2A54700559B72 /* JSDAbountViewModel.m */,
+				55727C5D22F2A54700559B72 /* JSDAboutUSVC.h */,
+				55727C5B22F2A54700559B72 /* JSDAboutUSVC.m */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		55727C5F22F2A54700559B72 /* Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				55727C6022F2A54700559B72 /* JSDFeedBacksVC.h */,
+				55727C6222F2A54700559B72 /* JSDFeedBacksVC.m */,
+				55727C6122F2A54700559B72 /* JSDFeedBacksVC.xib */,
+			);
+			path = Feedback;
+			sourceTree = "<group>";
+		};
+		55727C6322F2A54700559B72 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				55727C6422F2A54700559B72 /* JSDMyCenterViewModel.m */,
+				55727C6522F2A54700559B72 /* JSDMyCenterViewModel.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		55727C6622F2A54700559B72 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				55727C6722F2A54700559B72 /* JSDCollectionViewCell.h */,
+				55727C6922F2A54700559B72 /* JSDCollectionViewCell.m */,
+				55727C6822F2A54700559B72 /* JSDCollectionViewCell.xib */,
+				55727C7A22F2A71F00559B72 /* JSDMyCenterHeaderView.h */,
+				55727C7B22F2A71F00559B72 /* JSDMyCenterHeaderView.m */,
+				55727C7D22F2A72800559B72 /* JSDMyCenterHeaderView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		55727C6A22F2A54700559B72 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				55727C6B22F2A54700559B72 /* JSDMyCenterVC.h */,
+				55727C6D22F2A54700559B72 /* JSDMyCenterVC.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		55727C7F22F2AF2D00559B72 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				55727C8422F2B0AE00559B72 /* Model */,
+				55727C8322F2B0A800559B72 /* View */,
+				55727C8022F2AF4000559B72 /* JSDSettingVC.h */,
+				55727C8122F2AF4000559B72 /* JSDSettingVC.m */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		55727C8322F2B0A800559B72 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				55727C8522F2B0D300559B72 /* JSDSettingCell.h */,
+				55727C8622F2B0D300559B72 /* JSDSettingCell.m */,
+				55727C8722F2B0D300559B72 /* JSDSettingCell.xib */,
+				55727C8A22F2B16E00559B72 /* JSDSwitch.h */,
+				55727C8B22F2B16E00559B72 /* JSDSwitch.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		55727C8422F2B0AE00559B72 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				55727C9022F2B43F00559B72 /* JSDSettingViewModel.h */,
+				55727C9122F2B43F00559B72 /* JSDSettingViewModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		76D31F0F0F289B8755541CA1 /* Frameworks */ = {
@@ -519,10 +642,15 @@
 			files = (
 				5534DCCD22F125EB006E8ABB /* LaunchScreen.storyboard in Resources */,
 				55727B5522F1461D00559B72 /* JSDAddTargetVC.xib in Resources */,
+				55727C8922F2B0D300559B72 /* JSDSettingCell.xib in Resources */,
 				55727B6B22F19BC100559B72 /* JSDTargetDetailVC.xib in Resources */,
 				55727B7522F28C1B00559B72 /* JSDTargetHeaderReusableView.xib in Resources */,
+				55727C7522F2A54700559B72 /* JSDCollectionViewCell.xib in Resources */,
 				55727B7022F1A4B300559B72 /* JSDTargetCell.xib in Resources */,
+				55727C7E22F2A72800559B72 /* JSDMyCenterHeaderView.xib in Resources */,
+				55727C7222F2A54700559B72 /* JSDFeedBacksVC.xib in Resources */,
 				5534DCCA22F125EB006E8ABB /* Assets.xcassets in Resources */,
+				55727C5822F29E0A00559B72 /* JSDTargetTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,29 +751,41 @@
 			buildActionMask = 2147483647;
 			files = (
 				55727B3122F1328900559B72 /* JSDTabBarViewController.m in Sources */,
+				55727C8222F2AF4000559B72 /* JSDSettingVC.m in Sources */,
 				55727B2622F1320100559B72 /* JSDBaseViewController.m in Sources */,
 				55727B3F22F1399600559B72 /* JSDBaseNavigationController.m in Sources */,
 				55727B6622F190FF00559B72 /* JSDCalendersubView.m in Sources */,
+				55727C7622F2A54700559B72 /* JSDCollectionViewCell.m in Sources */,
 				5534DCD022F125EB006E8ABB /* main.m in Sources */,
 				55727B4222F13A4500559B72 /* JSDBaseModel.m in Sources */,
+				55727C7022F2A54700559B72 /* JSDAboutUSVC.m in Sources */,
 				5534DCC222F125E9006E8ABB /* AppDelegate.m in Sources */,
 				55727B6922F1985900559B72 /* JSDTargetDetailVC.m in Sources */,
 				55727B6322F18EE700559B72 /* JSDCalenderHeaderView.m in Sources */,
 				55727B2022F130F600559B72 /* UIFont+JSDTool.m in Sources */,
 				601E98E822F1C87A008CBE2B /* JSDCalendarVC.m in Sources */,
+				55727C8822F2B0D300559B72 /* JSDSettingCell.m in Sources */,
 				55727B6022F1752200559B72 /* UIButton+JSDTool.m in Sources */,
 				55727B4522F13A5000559B72 /* JSDBaseView.m in Sources */,
+				55727C8C22F2B16E00559B72 /* JSDSwitch.m in Sources */,
 				55727B6F22F1A4B300559B72 /* JSDTargetCell.m in Sources */,
+				55727C7322F2A54700559B72 /* JSDFeedBacksVC.m in Sources */,
 				55727B4E22F13E6700559B72 /* JSDAddTargetVC.m in Sources */,
+				55727C7422F2A54700559B72 /* JSDMyCenterViewModel.m in Sources */,
 				55727B7422F28C1B00559B72 /* JSDTargetHeaderReusableView.m in Sources */,
+				55727C9222F2B43F00559B72 /* JSDSettingViewModel.m in Sources */,
 				55727B3422F1338D00559B72 /* JSDAddTargetButton.m in Sources */,
 				55727B3C22F1353D00559B72 /* UIView+JSDFrame.m in Sources */,
+				55727C7122F2A54700559B72 /* JSDAbountViewModel.m in Sources */,
 				55727B5C22F1620C00559B72 /* JSDSelectedImageView.m in Sources */,
+				55727C5722F29E0A00559B72 /* JSDTargetTableViewCell.m in Sources */,
 				55727B5922F153D300559B72 /* JSDStackView.m in Sources */,
 				55727B4822F13AC600559B72 /* JSDTargetVC.m in Sources */,
+				55727C7822F2A54700559B72 /* JSDMyCenterVC.m in Sources */,
 				55727B2322F1310000559B72 /* UIColor+JSDTool.m in Sources */,
+				55727C7C22F2A71F00559B72 /* JSDMyCenterHeaderView.m in Sources */,
 				55727B3822F134C600559B72 /* UIImage+JSDTool.m in Sources */,
-				55727B4B22F13B7D00559B72 /* JSDMyCenterVC.m in Sources */,
+				55727C8F22F2B28100559B72 /* JSDBaseCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

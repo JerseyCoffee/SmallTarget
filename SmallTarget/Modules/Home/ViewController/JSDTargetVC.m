@@ -8,12 +8,12 @@
 
 #import "JSDTargetVC.h"
 #import "JSDCalenderHeaderView.h"
-#import "JSDtargetCell.h"
+#import "JSDTargetTableViewCell.h"
 #import "JSDTargetDetailVC.h"
 
 static NSString* const kJSDTargetCell = @"cell";
 
-@interface JSDTargetVC () <JSDCalenderHeaderViewDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface JSDTargetVC () <JSDCalenderHeaderViewDelegate, UITableViewDelegate, UITableViewDataSource, MGSwipeTableCellDelegate>
 
 @property (nonatomic, strong) JSDCalenderHeaderView* headerView;
 @property (nonatomic, strong) UITableView* tableView;
@@ -93,20 +93,50 @@ static NSString* const kJSDTargetCell = @"cell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
     return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kJSDTargetCell];
-    
-    if(cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kJSDTargetCell];
+    JSDTargetTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:kJSDTargetCell forIndexPath:indexPath];
+    if (!cell) {
+        cell = [[NSBundle mainBundle] loadNibNamed:@"JSDTargetTableViewCell" owner:nil options:nil].lastObject;
     }
     
-//    cell.textLabel.text = [NSString stringWithFormat:@"Cell %d", indexPath.row];
+    cell.delegate = self;
+    //configure right buttons
+    cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"编辑" backgroundColor:[UIColor blueColor]],
+                          [MGSwipeButton buttonWithTitle:@"删除" backgroundColor:[UIColor redColor]]
+                          ];
+    cell.leftSwipeSettings.transition = MGSwipeTransitionDrag;
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return 85;
+}
+
+#pragma mark - MGSwipeTableCellDelegate
+
+- (BOOL)swipeTableCell:(MGSwipeTableCell *)cell tappedButtonAtIndex:(NSInteger)index direction:(MGSwipeDirection)direction fromExpansion:(BOOL)fromExpansion {
+    
+//    JSDItemTableCell* itemCell = (JSDItemTableCell *)cell;
+//    NSLog(@"%ld", itemCell.section);
+//    switch (index) {
+//        case 1:{ //删除
+//            [self deleteItemModel: itemCell.viewModel];
+//        }
+//            break;
+//        case 0:{ //编辑
+//            [self editItemModel: itemCell.viewModel];
+//        }
+//        default:
+//            break;
+//    }
+    return YES;
 }
 
 #pragma mark - UITableView Delegate methods
@@ -149,16 +179,18 @@ static NSString* const kJSDTargetCell = @"cell";
 - (UITableView *)tableView {
     
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
 //        [_tableView registerNib:[UINib nibWithNibName:@"JSDTargetCell" bundle:[NSBundle mainBundle] forCellReuseIdentifier: kJSDTargetCell]];
-        [_tableView registerNib:[UINib nibWithNibName:@"JSDTargetCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:kJSDTargetCell];
+        [_tableView registerNib:[UINib nibWithNibName:@"JSDTargetTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:kJSDTargetCell];
          _tableView.backgroundColor = [UIColor jsd_mainGrayColor];
          _tableView.delegate = self;
          _tableView.dataSource = self;
          _tableView.tableFooterView = [[UIView alloc] init];
-         }
-         return _tableView;
+         _tableView.tableHeaderView = [[UIView alloc] init];
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
      }
+         return _tableView;
+ }
 
 @end
 
