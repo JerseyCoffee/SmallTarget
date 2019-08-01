@@ -83,13 +83,20 @@
     self.monthFinishView.layer.shadowRadius = 6;
     self.monthFinishView.layer.cornerRadius = 10;
     
-    
     [self addChildViewController:self.calendarVC];
     [self.calendarView addSubview:self.calendarVC.view];
     [self.calendarVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
     }];
     [self.calendarVC didMoveToParentViewController:self];
+    
+    self.calendarView.backgroundColor = [UIColor whiteColor];
+    self.calendarView.layer.shadowColor = [UIColor colorWithRed:165/255.0 green:177/255.0 blue:201/255.0 alpha:0.3].CGColor;
+    self.calendarView.layer.shadowOffset = CGSizeMake(0,1);
+    self.calendarView.layer.shadowOpacity = 1;
+    self.calendarView.layer.shadowRadius = 6;
+    self.calendarView.layer.cornerRadius = 10;
+    self.calendarView.layer.masksToBounds = YES;
 }
 
 - (void)reloadView {

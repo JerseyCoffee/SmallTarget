@@ -25,9 +25,12 @@
     }
     
     UIEdgeInsets imageInsets = UIEdgeInsetsZero;//UIEdgeInsetsMake(4.5, 0, -4.5, 0);
-    UIOffset titlePositionAdjustment = UIOffsetMake(0, -3.5);
+    UIOffset titlePositionAdjustment = UIOffsetMake(0, -1.5);
     
     CYLTabBarController* tabBarVC = [CYLTabBarController tabBarControllerWithViewControllers:self.viewControllers  tabBarItemsAttributes:[self tabBarItemsAttributesForController] imageInsets:imageInsets titlePositionAdjustment:titlePositionAdjustment];
+    
+    [self customizeTabBarAppearance:tabBarVC];
+//    self.navigationController.navigationBar.hidden = YES;
     
     return (self = (JSDTabBarViewController *)tabBarVC);
 }
@@ -41,19 +44,21 @@
 
 - (void)customizeTabBarAppearance:(CYLTabBarController *)tabBarController {
     
-    [tabBarController setTintColor:[UIColor jsd_skyBluecolor]];
+    [tabBarController setTintColor:[UIColor jsd_mainBlueColor]];
+    
+//    [tabBarController setTintColor:[UIColor jsd_colorWithHexString:@"#1288db"]];
 }
 
 - (NSArray *)tabBarItemsAttributesForController {
     NSDictionary *firstTabBarItemsAttributes = @{
                                                  CYLTabBarItemTitle : @"目标",
-                                                 CYLTabBarItemImage : @"home_defalut",
-                                                 CYLTabBarItemSelectedImage : @"home_selected",  /* NSString and UIImage are supported*/
+                                                 CYLTabBarItemImage : @"target_item_normal",
+                                                 CYLTabBarItemSelectedImage : @"target_item_selected",  /* NSString and UIImage are supported*/
                                                  };
     NSDictionary *secondTabBarItemsAttributes = @{
                                                   CYLTabBarItemTitle : @"我的",
-                                                  CYLTabBarItemImage : @"my_defalut",
-                                                  CYLTabBarItemSelectedImage : @"my_selected",
+                                                  CYLTabBarItemImage : @"my_item_normal",
+                                                  CYLTabBarItemSelectedImage : @"my_item_selected",
                                                   };
     
     NSArray *tabBarItemsAttributes = @[

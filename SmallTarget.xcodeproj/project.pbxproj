@@ -34,6 +34,8 @@
 		55727B6B22F19BC100559B72 /* JSDTargetDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55727B6A22F19BC100559B72 /* JSDTargetDetailVC.xib */; };
 		55727B6F22F1A4B300559B72 /* JSDTargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55727B6D22F1A4B300559B72 /* JSDTargetCell.m */; };
 		55727B7022F1A4B300559B72 /* JSDTargetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55727B6E22F1A4B300559B72 /* JSDTargetCell.xib */; };
+		55727B7422F28C1B00559B72 /* JSDTargetHeaderReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55727B7222F28C1B00559B72 /* JSDTargetHeaderReusableView.m */; };
+		55727B7522F28C1B00559B72 /* JSDTargetHeaderReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55727B7322F28C1B00559B72 /* JSDTargetHeaderReusableView.xib */; };
 		601E98E822F1C87A008CBE2B /* JSDCalendarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 601E98E722F1C87A008CBE2B /* JSDCalendarVC.m */; };
 		6D47F23C03E4AF13F09EFAAC /* libPods-SmallTarget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7039A737FF2EB919ECD34346 /* libPods-SmallTarget.a */; };
 /* End PBXBuildFile section */
@@ -95,6 +97,9 @@
 		55727B6C22F1A4B300559B72 /* JSDTargetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDTargetCell.h; sourceTree = "<group>"; };
 		55727B6D22F1A4B300559B72 /* JSDTargetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDTargetCell.m; sourceTree = "<group>"; };
 		55727B6E22F1A4B300559B72 /* JSDTargetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JSDTargetCell.xib; sourceTree = "<group>"; };
+		55727B7122F28C1B00559B72 /* JSDTargetHeaderReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDTargetHeaderReusableView.h; sourceTree = "<group>"; };
+		55727B7222F28C1B00559B72 /* JSDTargetHeaderReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDTargetHeaderReusableView.m; sourceTree = "<group>"; };
+		55727B7322F28C1B00559B72 /* JSDTargetHeaderReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JSDTargetHeaderReusableView.xib; sourceTree = "<group>"; };
 		601E98E622F1C87A008CBE2B /* JSDCalendarVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDCalendarVC.h; sourceTree = "<group>"; };
 		601E98E722F1C87A008CBE2B /* JSDCalendarVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDCalendarVC.m; sourceTree = "<group>"; };
 		7039A737FF2EB919ECD34346 /* libPods-SmallTarget.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmallTarget.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -234,13 +239,7 @@
 		55727B0C22F12D7700559B72 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				55727B6122F18EE700559B72 /* JSDCalenderHeaderView.h */,
-				55727B6222F18EE700559B72 /* JSDCalenderHeaderView.m */,
-				55727B6422F190FE00559B72 /* JSDCalendersubView.h */,
-				55727B6522F190FF00559B72 /* JSDCalendersubView.m */,
-				55727B6C22F1A4B300559B72 /* JSDTargetCell.h */,
-				55727B6D22F1A4B300559B72 /* JSDTargetCell.m */,
-				55727B6E22F1A4B300559B72 /* JSDTargetCell.xib */,
+				55727BF322F295B400559B72 /* TargetDetail */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -424,6 +423,23 @@
 			path = UIButton;
 			sourceTree = "<group>";
 		};
+		55727BF322F295B400559B72 /* TargetDetail */ = {
+			isa = PBXGroup;
+			children = (
+				55727B6122F18EE700559B72 /* JSDCalenderHeaderView.h */,
+				55727B6222F18EE700559B72 /* JSDCalenderHeaderView.m */,
+				55727B6422F190FE00559B72 /* JSDCalendersubView.h */,
+				55727B6522F190FF00559B72 /* JSDCalendersubView.m */,
+				55727B6C22F1A4B300559B72 /* JSDTargetCell.h */,
+				55727B6D22F1A4B300559B72 /* JSDTargetCell.m */,
+				55727B6E22F1A4B300559B72 /* JSDTargetCell.xib */,
+				55727B7122F28C1B00559B72 /* JSDTargetHeaderReusableView.h */,
+				55727B7222F28C1B00559B72 /* JSDTargetHeaderReusableView.m */,
+				55727B7322F28C1B00559B72 /* JSDTargetHeaderReusableView.xib */,
+			);
+			path = TargetDetail;
+			sourceTree = "<group>";
+		};
 		76D31F0F0F289B8755541CA1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -504,6 +520,7 @@
 				5534DCCD22F125EB006E8ABB /* LaunchScreen.storyboard in Resources */,
 				55727B5522F1461D00559B72 /* JSDAddTargetVC.xib in Resources */,
 				55727B6B22F19BC100559B72 /* JSDTargetDetailVC.xib in Resources */,
+				55727B7522F28C1B00559B72 /* JSDTargetHeaderReusableView.xib in Resources */,
 				55727B7022F1A4B300559B72 /* JSDTargetCell.xib in Resources */,
 				5534DCCA22F125EB006E8ABB /* Assets.xcassets in Resources */,
 			);
@@ -620,6 +637,7 @@
 				55727B4522F13A5000559B72 /* JSDBaseView.m in Sources */,
 				55727B6F22F1A4B300559B72 /* JSDTargetCell.m in Sources */,
 				55727B4E22F13E6700559B72 /* JSDAddTargetVC.m in Sources */,
+				55727B7422F28C1B00559B72 /* JSDTargetHeaderReusableView.m in Sources */,
 				55727B3422F1338D00559B72 /* JSDAddTargetButton.m in Sources */,
 				55727B3C22F1353D00559B72 /* UIView+JSDFrame.m in Sources */,
 				55727B5C22F1620C00559B72 /* JSDSelectedImageView.m in Sources */,

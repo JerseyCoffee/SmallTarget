@@ -86,7 +86,14 @@
     
     self.title = @"添加目标";
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleDone target:self action:@selector(onTouchBack:)];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@""
+                                                                   style:UIBarButtonItemStyleDone
+                                                                  target:self
+                                                                  action:@selector(didTapBack:)];
+    UIImage *backImage = [UIImage imageNamed:@"back"];
+    backButton.image = backImage;
+    backButton.tintColor = [UIColor jsd_colorWithHexString:@"#333333"];
+    self.navigationItem.leftBarButtonItem = backButton;
 }
 
 - (void)setupView {
@@ -197,7 +204,7 @@
     sender.selected = !sender.isSelected;
 }
 // 点击返回
-- (void)onTouchBack:(id)sender {
+- (void)didTapBack:(id)sender {
     
     self.tabBarController.selectedIndex = 0;
     

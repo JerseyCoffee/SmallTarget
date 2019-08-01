@@ -14,7 +14,11 @@
 + (id)plusButton {
     
     JSDAddTargetButton* flatButton = [[JSDAddTargetButton alloc] init];
-    [flatButton setImage:[UIImage jsd_imageNamePNG:@"add"] forState:UIControlStateNormal];
+//    [flatButton setImage:[UIImage jsd_imageNamePNG:@"addTarget_item"] forState:UIControlStateNormal];
+    [flatButton setImage:[UIImage imageNamed:@"addTarget_item"] forState:UIControlStateNormal];
+    flatButton.backgroundColor = [UIColor jsd_mainBlueColor];
+    flatButton.layer.masksToBounds = YES;
+    flatButton.layer.cornerRadius = 30;
     [flatButton jsd_setsize:CGSizeMake(60, 60)];
     
     return flatButton;
