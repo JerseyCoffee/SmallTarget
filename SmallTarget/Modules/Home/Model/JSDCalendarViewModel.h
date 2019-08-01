@@ -38,6 +38,18 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)lastMonthd; //上个月
 - (void)nextMonthd; //下个月
 
+
+#pragma mark -- TargetCalendar
+
+@property (assign, nonatomic) NSInteger targetDay; //几号
+@property (assign, nonatomic) NSInteger targetWeekDay; //星期几
+@property (assign, nonatomic) NSInteger targetMonth; // 月份
+@property (strong, nonatomic) NSArray* targetDays; //最近 7 天号数
+@property (strong, nonatomic) NSArray* targetWeekDays; //最近 7 天星期几
+@property (strong, nonatomic) NSDictionary *targetWeekDaysDic; //映射
+
+- (void)updateTarget;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)isShow;
 @property (nonatomic, strong) UIButton* calenderButton;
+@property (nonatomic, strong) UILabel* weekLabel;
 
 @end
 

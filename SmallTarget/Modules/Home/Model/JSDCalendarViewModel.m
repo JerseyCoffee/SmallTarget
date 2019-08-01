@@ -157,4 +157,55 @@
     [self update];
 }
 
+#pragma mark -- TargetCalendar
+
+- (void)updateTarget {
+    
+    NSDateComponents* compoents = [self.gregorian components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitWeekday | NSCalendarUnitDay fromDate:self.currentDate];
+    
+    self.targetDay = compoents.day; //号
+    self.targetWeekDay = --compoents.weekday; //星期几
+    self.targetMonth = compoents.month; // 月份
+    // 根据今天是星期几来取, 最近 7 天;
+    
+    NSMutableArray* tempWeekDayArray = NSMutableArray.new;
+    NSMutableArray* tempDayArray = NSMutableArray.new;
+    for (NSInteger i = -3; i < 0; i++) {
+        NSDate* date =  [self.gregorian dateByAddingUnit:NSCalendarUnitWeekday value:i toDate:self.currentDate options:0];
+        NSDateComponents* compoents = [self.gregorian components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitWeekday | NSCalendarUnitDay fromDate:date];
+        [tempWeekDayArray addObject:@(--compoents.weekday).stringValue];
+        [tempDayArray addObject:@(compoents.day).stringValue];
+    }
+    [tempWeekDayArray addObject:@(self.targetWeekDay).stringValue];
+    [tempDayArray addObject:@(self.targetDay).stringValue];
+    for (NSInteger i = 1; i < 4; i++) {
+        NSDate* date =  [self.gregorian dateByAddingUnit:NSCalendarUnitWeekday value:i toDate:self.currentDate options:0];
+        NSDateComponents* compoents = [self.gregorian components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitWeekday | NSCalendarUnitDay fromDate:date];
+        [tempWeekDayArray addObject:@(--compoents.weekday).stringValue];
+        [tempDayArray addObject:@(compoents.day).stringValue];
+    }
+    
+    self.targetWeekDays = tempWeekDayArray.copy;
+    self.targetDays = tempDayArray.copy;
+    
+    NSLog(@"几号%ld--星期几%ld---%@---星期数组%@---号数%@", self.targetDay, self.targetWeekDay, compoents, self.targetWeekDays, self.targetDays);
+    
+}
+
+- (NSDictionary *)targetWeekDaysDic {
+    
+    if (!_targetWeekDaysDic) {
+        _targetWeekDaysDic = @{
+                               @"0": @"日",
+                               @"1": @"一",
+                               @"2": @"二",
+                               @"3": @"三",
+                               @"4": @"四",
+                               @"5": @"五",
+                               @"6": @"六",
+                               };
+    }
+    return _targetWeekDaysDic;
+}
+
 @end

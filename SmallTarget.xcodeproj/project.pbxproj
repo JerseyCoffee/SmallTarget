@@ -297,6 +297,10 @@
 		55727B0C22F12D7700559B72 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				55727B6122F18EE700559B72 /* JSDCalenderHeaderView.h */,
+				55727B6222F18EE700559B72 /* JSDCalenderHeaderView.m */,
+				55727B6422F190FE00559B72 /* JSDCalendersubView.h */,
+				55727B6522F190FF00559B72 /* JSDCalendersubView.m */,
 				55727BF322F295B400559B72 /* TargetDetail */,
 				55727C5422F29E0A00559B72 /* JSDTargetTableViewCell.h */,
 				55727C5522F29E0A00559B72 /* JSDTargetTableViewCell.m */,
@@ -452,10 +456,6 @@
 		55727BF322F295B400559B72 /* TargetDetail */ = {
 			isa = PBXGroup;
 			children = (
-				55727B6122F18EE700559B72 /* JSDCalenderHeaderView.h */,
-				55727B6222F18EE700559B72 /* JSDCalenderHeaderView.m */,
-				55727B6422F190FE00559B72 /* JSDCalendersubView.h */,
-				55727B6522F190FF00559B72 /* JSDCalendersubView.m */,
 				55727B7122F28C1B00559B72 /* JSDTargetHeaderReusableView.h */,
 				55727B7222F28C1B00559B72 /* JSDTargetHeaderReusableView.m */,
 				55727B7322F28C1B00559B72 /* JSDTargetHeaderReusableView.xib */,

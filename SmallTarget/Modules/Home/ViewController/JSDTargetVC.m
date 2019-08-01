@@ -10,6 +10,7 @@
 #import "JSDCalenderHeaderView.h"
 #import "JSDTargetTableViewCell.h"
 #import "JSDTargetDetailVC.h"
+#import "JSDCalendarViewModel.h"
 
 static NSString* const kJSDTargetCell = @"cell";
 
@@ -17,6 +18,7 @@ static NSString* const kJSDTargetCell = @"cell";
 
 @property (nonatomic, strong) JSDCalenderHeaderView* headerView;
 @property (nonatomic, strong) UITableView* tableView;
+@property (strong, nonatomic) JSDCalendarViewModel *viewModel;
 
 @end
 
@@ -81,7 +83,8 @@ static NSString* const kJSDTargetCell = @"cell";
 #pragma mark - 3.Request Data
 
 - (void)setupData {
-    
+   
+    [self.viewModel updateTarget];
 }
 
 #pragma mark - 4.UITableViewDataSource and UITableViewDelegate
@@ -191,6 +194,14 @@ static NSString* const kJSDTargetCell = @"cell";
      }
          return _tableView;
  }
+
+- (JSDCalendarViewModel *)viewModel {
+    
+    if (!_viewModel) {
+        _viewModel = [[JSDCalendarViewModel alloc] init];
+    }
+    return _viewModel;
+}
 
 @end
 

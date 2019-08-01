@@ -10,11 +10,14 @@
 #import "JSDStackView.h"
 #import "JSDCalendersubView.h"
 #import "JSDTargetDetailVC.h"
+#import "JSDCalendarViewModel.h"
 
 @interface JSDCalenderHeaderView ()
 
 @property (nonatomic, strong) JSDStackView* stackView;
 @property (nonatomic, strong) UIButton* stackButton;
+@property (strong, nonatomic) NSArray *weekArray;
+@property (strong, nonatomic) JSDCalendarViewModel *viewModel;
 
 @end
 
@@ -30,7 +33,8 @@
 }
 
 - (void)setupView {
-    
+    //设置天数
+    [self.viewModel updateTarget];
     self.stackView = [[JSDStackView alloc] init];
     
     [self addSubview:self.stackView];
@@ -52,6 +56,8 @@
             [subView isShow];
         }
         [self.stackView addArrangedSubview:subView];
+        subView.weekLabel.text = [self.viewModel.targetWeekDaysDic objectForKey:self.viewModel.targetWeekDays[i]];
+        [subView.calenderButton setTitle:self.viewModel.targetDays[i] forState:UIControlStateNormal];
         subView.calenderButton.tag = i;
         subView.calenderButton.userInteractionEnabled = YES;
         [subView.calenderButton addTarget:self action:@selector(onTouchStackButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -75,6 +81,23 @@
             }
         }
     }
+}
+
+- (NSArray *)weekArray {
+    
+    if (!_weekArray) {
+        _weekArray = @[@"日",@"一",@"二",@"三",@"四",@"五",@"六"
+                       ];
+    }
+    return _weekArray;
+}
+
+- (JSDCalendarViewModel *)viewModel {
+    
+    if (!_viewModel) {
+        _viewModel = [[JSDCalendarViewModel alloc] init];
+    }
+    return _viewModel;
 }
 
 @end

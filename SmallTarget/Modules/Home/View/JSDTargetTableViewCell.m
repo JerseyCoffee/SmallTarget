@@ -8,11 +8,29 @@
 
 #import "JSDTargetTableViewCell.h"
 
+@interface JSDTargetTableViewCell ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *targetImageView;
+
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
+@property (weak, nonatomic) IBOutlet UIButton *finishButton;
+
+@end
+
 @implementation JSDTargetTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    self.titleLabel.font = [UIFont jsd_fontSize:18];
+    self.titleLabel.textColor = [UIColor jsd_mainBlackColor];
+    
+    self.subtitleLabel.font = [UIFont jsd_fontSize:12];
+    self.subtitleLabel.textColor = [UIColor jsd_colorWithHexString:@"#999999"];
+    
+    
 }
 
 - (void)setFrame:(CGRect)frame{

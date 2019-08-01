@@ -10,7 +10,7 @@
 
 @interface JSDCalendersubView ()
 
-@property (nonatomic, strong) UILabel* weekLabel;
+
 
 @end
 
