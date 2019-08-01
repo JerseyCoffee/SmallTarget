@@ -9,10 +9,16 @@
 #import "JSDCalendarVC.h"
 #import <MDCCollectionViewCell.h>
 #import "JSDTargetHeaderReusableView.h"
+#import "JSDCalenderViewCell.h"
+#import "JSDCalendarViewModel.h"
+#import <JTCalendar.h>
+#import <FSCalendar.h>
 
 @interface JSDCalendarVC ()
 
 @property (nonatomic, strong) JSDTargetHeaderReusableView* headerView;
+@property (nonatomic, strong) NSArray* weekArray;
+@property (nonatomic, strong) JSDCalendarViewModel* viewModel;
 
 @end
 
@@ -51,7 +57,9 @@ static NSString * const headerReuseIdentifier = @"header";
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    [self.collectionView registerClass:[MDCCollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    self.collectionView.backgroundColor = [UIColor whiteColor];
+    
+    [self.collectionView registerNib:[UINib nibWithNibName:@"JSDCalenderViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:reuseIdentifier];
 
     [self.view addSubview:self.headerView];
     
@@ -74,6 +82,7 @@ static NSString * const headerReuseIdentifier = @"header";
 
 - (void)setupData {
     
+    [self.viewModel update];
 }
 
 #pragma mark - 4.UITableViewDataSource and UITableViewDelegate
@@ -82,18 +91,42 @@ static NSString * const headerReuseIdentifier = @"header";
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     
-    return 1;
+    return 2;
 }
-
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return 32;
+    if (section == 0) {
+        return 7;
+    } else {
+        return (self.viewModel.titleArray.count + self.viewModel.index); // 偏移设置
+    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
+    JSDCalenderViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    if (indexPath.section == 0) {
+        cell.titleLabel.text = self.weekArray[indexPath.item];
+        cell.contentView.backgroundColor = [UIColor whiteColor];
+    } else {
+        if (indexPath.row >= self.viewModel.index) {
+            cell.titleLabel.text = self.viewModel.titleArray[indexPath.row - self.viewModel.index]; // 偏移取值
+            if (self.viewModel.isShowCurrentMonth) {
+                if (self.viewModel.dayIndex == indexPath.row) {
+                    cell.contentView.backgroundColor = [UIColor jsd_mainBlueColor];
+                } else {
+                    cell.contentView.backgroundColor = [UIColor whiteColor];
+                }
+            } else {
+                cell.contentView.backgroundColor = [UIColor whiteColor];
+            }
+        } else {
+            cell.titleLabel.text = nil;
+        }
+    }
+//    cell.layer.cornerRadius = 16;
+//    cell.layer.masksToBounds = YES;
     
     return cell;
 }
@@ -117,7 +150,11 @@ static NSString * const headerReuseIdentifier = @"header";
 //设置每个item的UIEdgeInsets
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(15, 10, 15, 10);
+    if (section == 0) {
+        return UIEdgeInsetsMake(0, 10, 10, 10);
+    } else {
+        return UIEdgeInsetsMake(0, 10, 15, 10);
+    }
 }
 
 //设置每个item水平间距
@@ -168,8 +205,21 @@ static NSString * const headerReuseIdentifier = @"header";
  }
  */
 
-
 #pragma mark - 5.Event Response
+
+- (void)onTouchHeaderViewLeftButton:(UIButton *)sender {
+
+    [self.viewModel lastMonthd];
+    [self.collectionView reloadData];
+    self.headerView.titleLabel.text = [NSString stringWithFormat:@"%ld 年 %ld 月", self.viewModel.year, self.viewModel.month];
+}
+
+- (void)onTouchHeaderViewRightButton:(UIButton *)sender {
+    
+    [self.viewModel nextMonthd];
+    [self.collectionView reloadData];
+    self.headerView.titleLabel.text = [NSString stringWithFormat:@"%ld 年 %ld 月", self.viewModel.year, self.viewModel.month];
+}
 
 #pragma mark - 6.Private Methods
 
@@ -183,8 +233,28 @@ static NSString * const headerReuseIdentifier = @"header";
     
     if (!_headerView) {
         _headerView = [[NSBundle mainBundle] loadNibNamed:@"JSDTargetHeaderReusableView" owner:nil options:nil].lastObject;
+        [_headerView.leftButton addTarget:self action:@selector(onTouchHeaderViewLeftButton:) forControlEvents:UIControlEventTouchUpInside];
+        [_headerView.rightButton addTarget:self action:@selector(onTouchHeaderViewRightButton:) forControlEvents:UIControlEventTouchUpInside];
+        
     }
     return _headerView;
+}
+
+- (NSArray *)weekArray {
+    
+    if (!_weekArray) {
+        _weekArray = @[@"日",@"一",@"二",@"三",@"四",@"五",@"六",
+                       ];
+    }
+    return _weekArray;
+}
+
+- (JSDCalendarViewModel *)viewModel {
+    
+    if (!_viewModel) {
+        _viewModel = [[JSDCalendarViewModel alloc] init];
+    }
+    return _viewModel;
 }
 
 @end

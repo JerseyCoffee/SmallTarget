@@ -17,6 +17,9 @@ target 'SmallTarget' do
   pod 'FDFullscreenPopGesture', '~>1.1'
   pod 'BRPickerView'
   pod 'UIViewController+KeyboardAnimation', '~> 1.3'
+  pod 'JTCalendar', '~> 2.0'
+  pod 'FSCalendar'
+  
 	inhibit_all_warnings!  #禁止掉三方库警告
 
 end

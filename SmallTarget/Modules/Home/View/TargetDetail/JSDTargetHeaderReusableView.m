@@ -12,9 +12,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *headerContentView;
 @property (weak, nonatomic) IBOutlet UIView *separateView;
-@property (weak, nonatomic) IBOutlet UIButton *leftButton;
-@property (weak, nonatomic) IBOutlet UIButton *rightButton;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
+
 
 @end
 
@@ -25,8 +24,18 @@
     [super awakeFromNib];
     // Initialization code
     
-//    self.titleLabel.font = []
-   
+    [self.leftButton setImage:[UIImage jsd_imageNamePNG:@"left"] forState:UIControlStateNormal];
+    [self.rightButton setImage:[UIImage jsd_imageNamePNG:@"right"] forState:UIControlStateNormal];
+    
+    self.titleLabel.font = [UIFont jsd_fontSize:17];
+    self.titleLabel.textColor = [UIColor jsd_mainBlackColor];
+    self.titleLabel.text = @"2019 年 8 月";
+    NSCalendar* calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *comps = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute|NSCalendarUnitSecond|NSCalendarUnitWeekday fromDate:[NSDate date]];
+    self.currentMonth = comps.month;
+    
 }
+
+
 
 @end
