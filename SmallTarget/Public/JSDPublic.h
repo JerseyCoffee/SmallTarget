@@ -24,4 +24,9 @@
 #import "JSDBaseNavigationController.h"
 #import "JSDBaseCollectionViewController.h"
 
+#pragma mark -- help
+
+#import "JSDTargetViewModel.h"
+#import "JSDTargetManage.h"
+
 #endif /* JSDPublic_h */

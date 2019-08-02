@@ -57,9 +57,9 @@
 - (void)isShow {
     
     self.calenderButton.backgroundColor = [UIColor jsd_colorWithHexString:@"#F5B853"];
+    [self.calenderButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.calenderButton.layer.cornerRadius = 16;
     self.calenderButton.layer.masksToBounds = YES;
-    [self.calenderButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
 - (void)layoutSubviews {

@@ -141,6 +141,9 @@
                                         <constraint firstAttribute="height" constant="47" id="mzy-bH-EUQ"/>
                                     </constraints>
                                     <state key="normal" title="确定添加目标"/>
+                                    <connections>
+                                        <action selector="onTouchConfirmAddButton:" destination="-1" eventType="touchUpInside" id="CRa-Qf-9M1"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tu-oO-VRU" customClass="MDCRaisedButton">
                                     <rect key="frame" x="89" y="622" width="46" height="30"/>

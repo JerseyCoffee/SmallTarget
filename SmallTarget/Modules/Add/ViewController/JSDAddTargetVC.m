@@ -11,6 +11,8 @@
 #import "JSDSelectedImageView.h"
 #import <BRPickerView.h>
 #import <UIViewController+KeyboardAnimation.h>
+#import "JSDTargetViewModel.h"
+#import "JSDTargetManage.h"
 
 @interface JSDAddTargetVC ()
 
@@ -37,6 +39,10 @@
 @property (strong, nonatomic) MDCTextInputControllerUnderline *sayingTextFieldController;
 
 @property (weak, nonatomic) IBOutlet MDCButton *addTargetButton;
+
+@property (nonatomic, strong) JSDTargetModel* model;
+@property (nonatomic, strong) NSMutableArray* selectedFinishArr;
+@property (nonatomic, strong) JSDTargetManage* manage;
 
 @end
 
@@ -180,6 +186,8 @@
     [self.addTargetButton setTitleFont:[UIFont jsd_fontSize:17] forState:UIControlStateNormal];
     [self.addTargetButton setTintColor:[UIColor whiteColor]];
     [self.addTargetButton setTitle:@"确定添加目标" forState:UIControlStateNormal];
+//    [self.addTimerButton addTarget:self action:@selector(onTouchConfirmAdd:) forControlEvents:UIControlEventTouchUpInside];
+    NSLog(@"anniu ???%@", self.addTimerButton);
 }
 
 - (void)reloadView {
@@ -200,8 +208,16 @@
 // 选择打卡时间;
 - (void)onTouchFinishTimer:(UIButton *)sender {
     
-    NSLog(@"点中%ld", sender.tag);
     sender.selected = !sender.isSelected;
+    if (sender.selected) {
+        if (![self.selectedFinishArr containsObject:@(sender.tag).stringValue]) {
+            [self.selectedFinishArr addObject:@(sender.tag).stringValue];
+        }
+    } else {
+        if ([self.selectedFinishArr containsObject:@(sender.tag).stringValue]) {
+            [self.selectedFinishArr removeObject:@(sender.tag).stringValue];
+        }
+    }
 }
 // 点击返回
 - (void)didTapBack:(id)sender {
@@ -225,6 +241,41 @@
         self.showTipTimerButton.hidden = NO;
         [self.showTipTimerButton setTitle:selectValue forState:UIControlStateNormal];
     }];
+}
+
+- (IBAction)onTouchConfirmAddButton:(MDCButton *)sender {
+    
+    BOOL havaTitle = JSDIsString(self.targetTextField.text);
+    if (havaTitle) {
+        [self savaTargetData];
+    } else {
+        MDCSnackbarManager* manager = [MDCSnackbarManager defaultManager];
+        MDCSnackbarMessage* message = [MDCSnackbarMessage messageWithText:@"请添加标题"];
+        [manager showMessage:message];
+    }
+}
+
+- (void)savaTargetData {
+    
+    self.model.title = self.targetTextField.text;
+    self.model.encourage = self.sayingTextField.text;
+    if (self.selectedImageView.lastButton) {
+        self.model.imageView = [NSString stringWithFormat:@"target_%ld_selected", self.selectedImageView.lastButton.tag];
+    } else {
+        self.model.imageView = @"target_0_selected";
+    }
+    //保存打开时间.
+    if (!self.selectedFinishArr.count) {
+        self.model.finishWeekDays = @[@"0"].mutableCopy;
+    } else {
+        self.model.finishWeekDays = self.selectedFinishArr;
+    }
+    
+    [self.manage addTargetModel:self.model];
+    
+    JSDTargetViewModel* viewModel = [[JSDTargetViewModel alloc] init];
+    
+    NSLog(@"%@", viewModel.listArray);
 }
 
 #pragma mark - 6.Private Methods
@@ -257,6 +308,30 @@
         _sayingTextFieldController.placeholderText = @"坚持就是胜利";
     }
     return _sayingTextFieldController;
+}
+
+- (JSDTargetModel *)model {
+    
+    if (!_model) {
+        _model = [[JSDTargetModel alloc] init];
+    }
+    return _model;
+}
+
+- (NSMutableArray *)selectedFinishArr {
+    
+    if (!_selectedFinishArr) {
+        _selectedFinishArr = NSMutableArray.new;
+    }
+    return _selectedFinishArr;
+}
+
+- (JSDTargetManage *)manage {
+    
+    if (!_manage) {
+        _manage = [[JSDTargetManage alloc] init];
+    }
+    return _manage;
 }
 
 @end
