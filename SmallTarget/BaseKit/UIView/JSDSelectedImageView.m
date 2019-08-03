@@ -115,8 +115,14 @@
 
 - (void)setupLastButton:(NSInteger)imageIndex {
     
-    self.lastButton = self.buttonS[imageIndex];
-    self.buttonS[imageIndex].selected = YES;
+    if (imageIndex == 100) {
+        self.lastButton.selected = NO;
+        self.lastButton = nil;
+    } else {
+        self.lastButton = self.buttonS[imageIndex];
+        self.buttonS[imageIndex].selected = YES;
+    }
+   
 }
 
 @end

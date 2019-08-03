@@ -96,7 +96,7 @@
 - (NSString *)userName {
     
     if (!_userName) {
-        _userName = @"Jersey";
+        _userName = @"SmallTarget";
     }
     return _userName;
 }

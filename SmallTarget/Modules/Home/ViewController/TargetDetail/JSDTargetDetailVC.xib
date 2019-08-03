@@ -46,13 +46,13 @@
                                     <rect key="frame" x="15" y="70.5" width="187" height="80"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BbB-r2-jD2">
-                                            <rect key="frame" x="88.5" y="10" width="10" height="21"/>
+                                            <rect key="frame" x="88.5" y="15" width="10" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本月累计" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="INc-PQ-icw">
-                                            <rect key="frame" x="58.5" y="49" width="70" height="21"/>
+                                            <rect key="frame" x="58.5" y="44" width="70" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -60,24 +60,24 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="INc-PQ-icw" secondAttribute="bottom" constant="10" id="I4n-HI-hyN"/>
+                                        <constraint firstAttribute="bottom" secondItem="INc-PQ-icw" secondAttribute="bottom" constant="15" id="I4n-HI-hyN"/>
                                         <constraint firstAttribute="height" constant="80" id="a2C-pQ-B3J"/>
                                         <constraint firstItem="INc-PQ-icw" firstAttribute="centerX" secondItem="fxa-1p-upe" secondAttribute="centerX" id="f6Q-dc-ibZ"/>
                                         <constraint firstItem="BbB-r2-jD2" firstAttribute="centerX" secondItem="fxa-1p-upe" secondAttribute="centerX" id="kBW-sB-NBh"/>
-                                        <constraint firstItem="BbB-r2-jD2" firstAttribute="top" secondItem="fxa-1p-upe" secondAttribute="top" constant="10" id="qo7-p3-FxK"/>
+                                        <constraint firstItem="BbB-r2-jD2" firstAttribute="top" secondItem="fxa-1p-upe" secondAttribute="top" constant="15" id="qo7-p3-FxK"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x98-5C-qV1">
                                     <rect key="frame" x="212" y="70.5" width="187" height="80"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EwG-4i-6WF">
-                                            <rect key="frame" x="88.5" y="10" width="10" height="21"/>
+                                            <rect key="frame" x="88.5" y="15" width="10" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本月累计" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8US-Mk-KEB">
-                                            <rect key="frame" x="58.5" y="49" width="70" height="21"/>
+                                            <rect key="frame" x="58.5" y="44" width="70" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -85,8 +85,8 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="8US-Mk-KEB" secondAttribute="bottom" constant="10" id="KMT-dy-WYx"/>
-                                        <constraint firstItem="EwG-4i-6WF" firstAttribute="top" secondItem="x98-5C-qV1" secondAttribute="top" constant="10" id="QgD-eX-8QW"/>
+                                        <constraint firstAttribute="bottom" secondItem="8US-Mk-KEB" secondAttribute="bottom" constant="15" id="KMT-dy-WYx"/>
+                                        <constraint firstItem="EwG-4i-6WF" firstAttribute="top" secondItem="x98-5C-qV1" secondAttribute="top" constant="15" id="QgD-eX-8QW"/>
                                         <constraint firstItem="8US-Mk-KEB" firstAttribute="centerX" secondItem="x98-5C-qV1" secondAttribute="centerX" id="Tkq-me-aDb"/>
                                         <constraint firstItem="EwG-4i-6WF" firstAttribute="centerX" secondItem="x98-5C-qV1" secondAttribute="centerX" id="mnu-l1-2Hz"/>
                                     </constraints>

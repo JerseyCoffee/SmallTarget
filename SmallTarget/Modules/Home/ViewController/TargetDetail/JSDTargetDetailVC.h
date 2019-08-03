@@ -10,6 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+extern NSString* const kTargetCalenderShow;
+extern NSString* const kTargetCalenderHide;
+
 @interface JSDTargetDetailVC : JSDBaseViewController
 
 @property (strong, nonatomic) JSDTargetModel *model;

@@ -148,7 +148,6 @@ NSString* const kTargetListChangeNotification = @"targetListChangeNotification";
         [alertController addAction:cancelAction];
         [alertController addAction:confirm];
         [self presentViewController:alertController animated:YES completion:nil];
-        
     } else {
         //打卡成功
         [self.targetManage finishTargetModel:model];

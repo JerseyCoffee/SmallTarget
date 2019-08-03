@@ -1,0 +1,48 @@
+[ {
+    "title": "背单词",
+	"imageView": "target_0_selected",
+	"imageIndex": "0",
+    "finishWeekDays": ["1","2","3","4","5","6","0"],
+	"notificationTimes": [],
+    "encourage": "坚持就是胜利",
+    "finishStatus": "NO",
+    "notificationStatus": "NO",
+    "monthNumber": "0",
+    "totalNumber": "0",
+    
+},{
+    "title": "看书",
+    "imageView": "target_1_selected",
+    "imageIndex": "1",
+    "finishWeekDays": ["1","2","3","4","5","6","0"],
+    "notificationTimes": [],
+    "encourage": "坚持就是胜利",
+    "finishStatus": "NO",
+    "notificationStatus": "NO",
+    "monthNumber": "0",
+    "totalNumber": "0",
+}, {
+    "title": "早睡",
+    "imageView": "target_2_selected",
+    "imageIndex": "2",
+    "finishWeekDays": ["1","2","3","4","5","6","0"],
+    "notificationTimes": [],
+    "encourage": "坚持就是胜利",
+    "finishStatus": "NO",
+    "notificationStatus": "NO",
+    "monthNumber": "0",
+    "totalNumber": "0",
+}, {
+    "title": "早起",
+    "imageView": "target_13_selected",
+    "imageIndex": "13",
+    "finishWeekDays": ["1","2","3","4","5","6","0"],
+    "notificationTimes": [],
+    "encourage": "坚持就是胜利",
+    "finishStatus": "NO",
+    "notificationStatus": "NO",
+    "monthNumber": "0",
+    "totalNumber": "0",
+}]
+ 
+ 

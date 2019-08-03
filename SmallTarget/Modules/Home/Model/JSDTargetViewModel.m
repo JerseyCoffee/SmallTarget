@@ -16,7 +16,8 @@
     
     if (!_listArray) {
         NSFileManager* fileManager = [NSFileManager defaultManager];
-        NSString* targetPath = [NSHomeDirectory() stringByAppendingPathComponent: kJSDTargetFilesPath];
+        NSString* document = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+        NSString* targetPath = [document stringByAppendingPathComponent: kJSDTargetFilesPath];
         if ([fileManager fileExistsAtPath:targetPath]) {
             NSData* data = [NSData dataWithContentsOfFile:targetPath];
             NSArray* array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -25,8 +26,11 @@
             } else {
                 _listArray = [[NSMutableArray alloc] init];
             }
-        } else {
-            _listArray = NSMutableArray.new;
+        } else { // 首次启动默认使用数据
+            NSString* targetPath = [[NSBundle mainBundle] pathForResource:@"JerseyData" ofType:@"json"];
+            NSData* data = [NSData dataWithContentsOfFile:targetPath];
+            NSArray* array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            _listArray = [JSDTargetModel mj_objectArrayWithKeyValuesArray:array];
         }
     }
     return _listArray;
@@ -52,6 +56,8 @@
             }
         }
         self.currentDaylistArray = tempArray.mutableCopy;
+    } else {
+        self.currentDaylistArray = nil;
     }
 }
 

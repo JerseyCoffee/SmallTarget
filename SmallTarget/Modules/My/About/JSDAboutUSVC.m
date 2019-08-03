@@ -12,7 +12,7 @@
 #import "JSDAbountViewModel.h"
 
 //TODO:
-NSString* const kJSDAppleID = @"1474780395";
+NSString* const kJSDAppleID = @"1475354522";
 
 @interface JSDAboutUSVC ()
 

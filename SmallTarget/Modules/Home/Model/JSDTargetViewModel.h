@@ -36,6 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (assign, nonatomic) NSInteger monthNumber; //月累计打卡次数
 @property (assign, nonatomic) NSInteger totalNumber; //总共累计
+@property (strong, nonatomic) NSMutableArray<NSDictionary*> *finishrecordS;
 
 @end
 

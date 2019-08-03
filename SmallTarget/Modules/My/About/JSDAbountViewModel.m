@@ -15,12 +15,11 @@
     
     if (!_listArray) {
         NSArray* array = @[@{@"title": @"官网",
-                             @"detail": @"https://www.jianshu.com/p/ceda10b4552e",
+                             @"detail": @"https://www.jianshu.com/p/103cde272183",
                              
                                },
                            @{@"title": @"App 版本",
                              @"detail": @"V1.0.0",
-                             
                              },
                            @{@"title": @"App 评分",
                              @"detail": @"非常感谢你使用我们App, 如果您喜欢轻松小目标,点击即可前往评论页进行评论!",

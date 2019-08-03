@@ -10,6 +10,9 @@
 
 #import "JSDCalendarVC.h"
 
+NSString* const kTargetCalenderShow = @"kTargetCalenderShow";
+NSString* const kTargetCalenderHide = @"kTargetCalenderHide";
+
 @interface JSDTargetDetailVC ()
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -89,7 +92,7 @@
     self.totalNumberLabel.textColor = [UIColor jsd_mainBlackColor];
     self.totalTitleLabel.font = [UIFont jsd_fontSize:12];
     self.totalTitleLabel.textColor = [UIColor jsd_subTitleColor];
-    self.totalTitleLabel.text = @"累计打卡";
+    self.totalTitleLabel.text = @"累计打卡数量";
     
     self.monthFinishView.backgroundColor = [UIColor whiteColor];
     self.monthFinishView.layer.shadowColor = [UIColor colorWithRed:165/255.0 green:177/255.0 blue:201/255.0 alpha:0.3].CGColor;
@@ -102,7 +105,7 @@
     self.monthNumberLabel.textColor = [UIColor jsd_mainBlackColor];
     self.monthTitleLabel.font = [UIFont jsd_fontSize:12];
     self.monthTitleLabel.textColor = [UIColor jsd_subTitleColor];
-    self.monthTitleLabel.text = @"本月打卡";
+    self.monthTitleLabel.text = @"本月打卡数量";
     
     [self addChildViewController:self.calendarVC];
     [self.calendarView addSubview:self.calendarVC.view];
@@ -132,7 +135,6 @@
     self.sayingLabel.text = self.model.encourage;
     self.totalNumberLabel.text = @(self.model.totalNumber).stringValue;
     self.monthNumberLabel.text = @(self.model.monthNumber).stringValue;
-    
 }
 
 #pragma mark - 4.UITableViewDataSource and UITableViewDelegate
@@ -143,6 +145,21 @@
 
 - (void)setupNotification {
     
+    //TODO: 投机取巧
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(calenderHide:) name:kTargetCalenderHide object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(calenderShow:) name:kTargetCalenderShow object:nil];
+}
+
+- (void)calenderHide:(id)sender {
+    
+    self.totalNumberLabel.text = @(self.model.totalNumber).stringValue;
+    self.monthNumberLabel.text = @"0";
+}
+
+- (void)calenderShow:(id)sender {
+    
+    self.totalNumberLabel.text = @(self.model.totalNumber).stringValue;
+    self.monthNumberLabel.text = @(self.model.monthNumber).stringValue;
 }
 
 #pragma mark - 7.GET & SET

@@ -174,11 +174,11 @@
     self.addTimerButton.layer.masksToBounds = YES;
     [self.addTimerButton addTarget:self action:@selector(onTouchSetupTimer:) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.showTipTimerButton setTitleFont:[UIFont jsd_fontSize:14] forState:UIControlStateNormal];
+    [self.showTipTimerButton setTitleFont:[UIFont jsd_fontSize:17] forState:UIControlStateNormal];
     [self.showTipTimerButton setTintColor:[UIColor jsd_mainBlueColor]];
     [self.showTipTimerButton setBackgroundColor:[UIColor jsd_colorWithHexString:@"#D5ECFD"]];
     [self.showTipTimerButton setTitle:@"10:50" forState:UIControlStateNormal];
-    [self.showTipTimerButton setImage:[UIImage imageNamed:@"close_timer"] forState:UIControlStateNormal];
+//    [self.showTipTimerButton setImage:[UIImage imageNamed:@"close_timer"] forState:UIControlStateNormal];
 //    self.showTipTimerButton.contentMode
     [self.showTipTimerButton setImageTintColor:[UIColor jsd_colorWithHexString:@"#f5b853"] forState:UIControlStateNormal];
     self.showTipTimerButton.hidden = YES;
@@ -199,14 +199,29 @@
     } else {
         [self.addTargetButton setTitle:@"确定添加目标" forState:UIControlStateNormal];
     }
+    
+    //默认选择当天
+    [self selectedFinishArr];
 }
 //清空数据,并且跳转TODO:
 - (void)reloadView {
     
+    [self.scrollView setContentOffset:CGPointMake(0, 0)];
+    //清理数据
     self.model = nil;
+    self.targetTextField.text = nil;
+    self.sayingTextField.text = @"坚持就是胜利";
+    for (UIButton* btn in self.finishButtons) {
+        btn.selected = NO;
+    }
+    //设置默认选择当天完成
+    self.selectedFinishArr = nil;
+    [self selectedFinishArr];
+    [self.selectedImageView setupLastButton:100];
+    self.showTipTimerButton.hidden = YES;
     
     MDCSnackbarManager* manager = [MDCSnackbarManager defaultManager];
-    MDCSnackbarMessage* message = [MDCSnackbarMessage messageWithText:@"目标添加成功"];
+    MDCSnackbarMessage* message = [MDCSnackbarMessage messageWithText:@"目标添加成功,当打开时间符合目标设置时会自动显示在主页"];
     [manager showMessage:message];
     
     self.tabBarController.selectedIndex = 0;
@@ -215,9 +230,8 @@
 //TODO:
 - (void)editComplection {
     
-    
     MDCSnackbarManager* manager = [MDCSnackbarManager defaultManager];
-    MDCSnackbarMessage* message = [MDCSnackbarMessage messageWithText:@"目标编辑成功"];
+    MDCSnackbarMessage* message = [MDCSnackbarMessage messageWithText:@"目标编辑成功,当打开时间符合目标设置时会自动显示在主页"];
     [manager showMessage:message];
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -236,7 +250,7 @@
             NSInteger index = self.model.finishWeekDays[i].integerValue;
             UIButton* btn;
             if (index == 0) {
-               btn = self.finishButtons[index];
+               btn = self.finishButtons[6];
             } else {
                btn = self.finishButtons[--index];
             }
@@ -390,6 +404,7 @@
         _sayingTextFieldController.activeColor = [UIColor blueColor];
         _sayingTextFieldController.borderFillColor = [UIColor jsd_colorWithHexString:@"#F5F5F5"];
         _sayingTextFieldController.placeholderText = @"坚持就是胜利";
+        self.sayingTextField.text = @"坚持就是胜利";
     }
     return _sayingTextFieldController;
 }
@@ -405,7 +420,17 @@
 - (NSMutableArray *)selectedFinishArr {
     
     if (!_selectedFinishArr) {
-        _selectedFinishArr = NSMutableArray.new;
+        JSDCalendarViewModel* calendar = [[JSDCalendarViewModel alloc] init];
+        [calendar updateTarget];
+        _selectedFinishArr = @[@(calendar.targetWeekDay).stringValue].mutableCopy;
+        NSInteger index = calendar.targetWeekDay;
+        UIButton* btn;
+        if (index == 0) {
+            btn = self.finishButtons.lastObject;
+        } else {
+            btn = self.finishButtons[--index];
+        }
+        btn.selected = YES;
     }
     return _selectedFinishArr;
 }

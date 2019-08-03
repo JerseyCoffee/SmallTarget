@@ -95,12 +95,11 @@ NSString* const kJSDTargetFilesPath = @"JSDTarget";
     return iscontains;
 }
 
-
-
 - (void)savaData {
     
     NSFileManager* fileManage = [NSFileManager defaultManager];
-    NSString* targetPath = [NSHomeDirectory() stringByAppendingPathComponent: kJSDTargetFilesPath];
+    NSString* document = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString* targetPath = [document stringByAppendingPathComponent: kJSDTargetFilesPath];
     if ([fileManage fileExistsAtPath:targetPath]) {
     } else {
         BOOL suceed =  [fileManage createFileAtPath:targetPath contents:nil attributes:nil];

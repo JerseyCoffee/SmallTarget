@@ -212,6 +212,13 @@ static NSString * const headerReuseIdentifier = @"header";
     [self.viewModel lastMonthd];
     [self.collectionView reloadData];
     self.headerView.titleLabel.text = [NSString stringWithFormat:@"%ld 年 %ld 月", self.viewModel.year, self.viewModel.month];
+    //TODO:
+    if (self.viewModel.month == 8) {
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTargetCalenderShow object:nil];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTargetCalenderHide object:nil];
+    }
 }
 
 - (void)onTouchHeaderViewRightButton:(UIButton *)sender {
@@ -219,6 +226,12 @@ static NSString * const headerReuseIdentifier = @"header";
     [self.viewModel nextMonthd];
     [self.collectionView reloadData];
     self.headerView.titleLabel.text = [NSString stringWithFormat:@"%ld 年 %ld 月", self.viewModel.year, self.viewModel.month];
+    //
+    if (self.viewModel.month == 8) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTargetCalenderShow object:nil];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTargetCalenderHide object:nil];
+    }
 }
 
 #pragma mark - 6.Private Methods
