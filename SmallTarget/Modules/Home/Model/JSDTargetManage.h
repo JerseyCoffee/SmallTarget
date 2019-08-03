@@ -22,10 +22,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)editTargetModel:(JSDTargetModel *)model;
 - (void)finishTargetModel:(JSDTargetModel* )model;
 - (void)cancelFnishTargetModel:(JSDTargetModel *)model;
+- (BOOL)checkoutFinishStatus:(JSDTargetModel*)model;
+- (BOOL)checkoutFinishStatus:(JSDTargetModel*)model yearMonthDay:(NSString *)yearMonthDay;
 
 - (BOOL)checkContainsTargetTitle:(NSString *)title;
 
 @property (nonatomic, strong) JSDTargetViewModel* viewModel;
+
+@property (copy, nonatomic) NSString *yearMonthDay; //年-月-日
 
 @end
 

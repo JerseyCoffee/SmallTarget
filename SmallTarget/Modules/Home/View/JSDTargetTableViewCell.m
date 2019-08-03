@@ -68,9 +68,7 @@
     self.targetImageView.image = [UIImage imageNamed:model.imageView];
     self.titleLabel.text = model.title;
     self.subtitleLabel.text = model.encourage;
-    NSString* imageName = model.finishStatus ? @"target_finish_complete": @"target_finish_normal";
-    [self.finishButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
-    
+    [self setupFinish];
 }
 
 - (void)onTouchButton:(id)sender {
@@ -78,6 +76,31 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(onTouchFinishModel:)]) {
         [self.delegate onTouchFinishModel:self.model];
     }
+}
+
+- (void)setupFinish {
+    
+    BOOL isFinish;
+    if ([[self.model.finishrecordS.firstObject allKeys] containsObject:self.yearMonthDay]) {
+        
+        NSNumber* isFinishNumber = [self.model.finishrecordS.firstObject objectForKey:self.yearMonthDay];
+        isFinish = isFinishNumber.boolValue;
+    } else {
+        isFinish = NO;
+    }
+    NSString* finishImageName = isFinish ? @"target_finish_complete": @"target_finish_normal";
+    [self.finishButton setImage:[UIImage imageNamed:finishImageName] forState:UIControlStateNormal];
+    
+}
+
+- (NSString *)yearMonthDay {
+    
+    if (!_yearMonthDay) {
+        NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyy-MM-dd";
+        _yearMonthDay = [formatter stringFromDate:[NSDate date]];
+    }
+    return _yearMonthDay;
 }
 
 @end

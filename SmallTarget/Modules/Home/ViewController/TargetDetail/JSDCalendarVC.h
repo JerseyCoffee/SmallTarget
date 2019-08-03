@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JSDCalendarVC : MDCCollectionViewController
 
+@property (strong, nonatomic) JSDTargetModel *model;
+
 @end
 
 NS_ASSUME_NONNULL_END

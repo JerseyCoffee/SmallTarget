@@ -50,6 +50,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)updateTarget;
 
+@property (copy, nonatomic) NSString *yearMonthDay; //年-月-日
+
 @end
 
 NS_ASSUME_NONNULL_END

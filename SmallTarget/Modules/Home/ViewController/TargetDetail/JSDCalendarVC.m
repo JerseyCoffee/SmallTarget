@@ -19,6 +19,8 @@
 @property (nonatomic, strong) JSDTargetHeaderReusableView* headerView;
 @property (nonatomic, strong) NSArray* weekArray;
 @property (nonatomic, strong) JSDCalendarViewModel* viewModel;
+@property (strong, nonatomic) JSDTargetManage *manage;
+@property (assign, nonatomic) CGFloat cellWidthHeight;
 
 @end
 
@@ -72,6 +74,9 @@ static NSString * const headerReuseIdentifier = @"header";
         make.left.right.bottom.mas_equalTo(0);
         make.top.mas_equalTo(self.headerView.mas_bottom);
     }];
+    
+    self.cellWidthHeight = ((ScreenWidth - 30) - (6 * 10) - 20) / 7;
+    [self.collectionView reloadData];
 }
 
 - (void)reloadView {
@@ -110,23 +115,52 @@ static NSString * const headerReuseIdentifier = @"header";
         cell.titleLabel.text = self.weekArray[indexPath.item];
         cell.contentView.backgroundColor = [UIColor whiteColor];
     } else {
-        if (indexPath.row >= self.viewModel.index) {
+        if (indexPath.item >= self.viewModel.index) {
             cell.titleLabel.text = self.viewModel.titleArray[indexPath.row - self.viewModel.index]; // 偏移取值
-            if (self.viewModel.isShowCurrentMonth) {
-                if (self.viewModel.dayIndex == indexPath.row) {
+            if (self.viewModel.isShowCurrentMonth) { //
+                if (self.viewModel.dayIndex == indexPath.item) {
                     cell.contentView.backgroundColor = [UIColor jsd_mainBlueColor];
+                    NSLog(@"---zexidao%ld----------", indexPath.item);
+                    BOOL isFinish = [self.manage checkoutFinishStatus:self.model];
+                    if (isFinish) {
+                        cell.titleLabel.textColor = [UIColor whiteColor];
+                    } else {
+                        cell.titleLabel.textColor = [UIColor jsd_mainBlackColor];
+                    }
                 } else {
-                    cell.contentView.backgroundColor = [UIColor whiteColor];
+                    if (self.viewModel.isShowCurrentMonth) {
+                        //判断当天是否已打卡.TODO: 暂时只记录 8 月份
+                        NSString* yearMonth = @"2019-08";
+                        NSInteger day = indexPath.row - self.viewModel.index + 1;
+                        NSString* dayString;
+                        if (day < 10) {
+                            dayString = [NSString stringWithFormat:@"0%ld", day];
+                        } else {
+                            dayString = @(day).stringValue;
+                        }
+                        NSString* yearMonthDay = [NSString stringWithFormat:@"%@-%@",yearMonth ,dayString];
+                        BOOL isFinish = [self.manage checkoutFinishStatus:self.model yearMonthDay:yearMonthDay];
+                        if (isFinish) {
+                            cell.titleLabel.textColor = [UIColor jsd_mainBlueColor];
+                        } else {
+                            cell.titleLabel.textColor = [UIColor jsd_mainBlackColor];
+                        }
+                    } else {
+                        NSLog(@"展示别的月份");
+                        cell.titleLabel.textColor = [UIColor jsd_mainBlackColor];
+                    }
                 }
             } else {
                 cell.contentView.backgroundColor = [UIColor whiteColor];
+                cell.titleLabel.textColor = [UIColor jsd_mainBlackColor];
+                NSLog(@"展示别的月份");
             }
         } else {
             cell.titleLabel.text = nil;
         }
     }
-//    cell.layer.cornerRadius = 16;
-//    cell.layer.masksToBounds = YES;
+    cell.layer.cornerRadius = self.cellWidthHeight / 2;
+    cell.layer.masksToBounds = YES;
     
     return cell;
 }
@@ -144,7 +178,7 @@ static NSString * const headerReuseIdentifier = @"header";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    return CGSizeMake((collectionView.jsd_width - (6 * 10) - 20) / 7, 32);
+    return CGSizeMake(self.cellWidthHeight, self.cellWidthHeight);
 }
 
 //设置每个item的UIEdgeInsets
@@ -268,6 +302,14 @@ static NSString * const headerReuseIdentifier = @"header";
         _viewModel = [[JSDCalendarViewModel alloc] init];
     }
     return _viewModel;
+}
+
+- (JSDTargetManage *)manage {
+    
+    if (!_manage) {
+        _manage = [JSDTargetManage sharedInstance];
+    }
+    return _manage;
 }
 
 @end

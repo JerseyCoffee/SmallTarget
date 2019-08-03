@@ -157,6 +157,16 @@
     [self update];
 }
 
+- (NSString *)yearMonthDay {
+    
+    if (!_yearMonthDay) {
+        NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyy-MM-dd";
+        _yearMonthDay = [formatter stringFromDate:self.currentDate];
+    }
+    return _yearMonthDay;
+}
+
 #pragma mark -- TargetCalendar
 
 - (void)updateTarget {

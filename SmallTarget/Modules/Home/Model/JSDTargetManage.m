@@ -55,9 +55,9 @@ NSString* const kJSDTargetFilesPath = @"JSDTarget";
     for (NSInteger i = 0; self.viewModel.listArray.count; i++) {
         JSDTargetModel* targetModel = self.viewModel.listArray[i];
         if ([targetModel.title isEqualToString:model.title]) {
-            targetModel.finishStatus = YES;
             targetModel.monthNumber++;
             targetModel.totalNumber++;
+            [targetModel.finishrecordS.firstObject setValue:@(YES) forKey:self.yearMonthDay];
             break;
         }
     }
@@ -70,9 +70,9 @@ NSString* const kJSDTargetFilesPath = @"JSDTarget";
     for (NSInteger i = 0; self.viewModel.listArray.count; i++) {
         JSDTargetModel* targetModel = self.viewModel.listArray[i];
         if ([targetModel.title isEqualToString:model.title]) {
-            targetModel.finishStatus = NO;
             targetModel.monthNumber--;
             targetModel.totalNumber--;
+            [targetModel.finishrecordS.firstObject setValue:@(NO) forKey:self.yearMonthDay];
             break;
         }
     }
@@ -94,6 +94,8 @@ NSString* const kJSDTargetFilesPath = @"JSDTarget";
     }
     return iscontains;
 }
+
+
 
 - (void)savaData {
     
@@ -122,6 +124,47 @@ NSString* const kJSDTargetFilesPath = @"JSDTarget";
         [_viewModel setupCurrentDaylistArray];
     }
     return _viewModel;
+}
+
+#pragma
+
+- (NSString *)yearMonthDay {
+    
+    if (!_yearMonthDay) {
+        NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyy-MM-dd";
+        _yearMonthDay = [formatter stringFromDate:[NSDate date]];
+    }
+    return _yearMonthDay;
+}
+
+- (BOOL)checkoutFinishStatus:(JSDTargetModel*)model {
+    
+    BOOL isFinish;
+    if ([[model.finishrecordS.firstObject allKeys] containsObject:self.yearMonthDay]) {
+        
+        NSNumber* isFinishNumber = [model.finishrecordS.firstObject objectForKey:self.yearMonthDay];
+        isFinish = isFinishNumber.boolValue;
+    } else {
+        isFinish = NO;
+    }
+    
+    return isFinish;
+}
+
+- (BOOL)checkoutFinishStatus:(JSDTargetModel*)model yearMonthDay:(NSString *)yearMonthDay {
+    
+    BOOL isFinish;
+    if ([[model.finishrecordS.firstObject allKeys] containsObject: yearMonthDay]) {
+        
+        NSNumber* isFinishNumber = [model.finishrecordS.firstObject objectForKey:yearMonthDay];
+        isFinish = isFinishNumber.boolValue;
+    } else {
+        isFinish = NO;
+    }
+    
+    return isFinish;
+    
 }
 
 @end

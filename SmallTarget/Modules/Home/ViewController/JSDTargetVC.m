@@ -22,7 +22,7 @@ NSString* const kTargetListChangeNotification = @"targetListChangeNotification";
 @property (nonatomic, strong) UITableView* tableView;
 @property (strong, nonatomic) JSDCalendarViewModel *calendarViewModel;
 @property (strong, nonatomic) JSDTargetManage *targetManage;
-
+@property (copy, nonatomic) NSString *yearMonthDay; //年-月-日
 
 @end
 
@@ -133,7 +133,8 @@ NSString* const kTargetListChangeNotification = @"targetListChangeNotification";
 // TODO: 打卡操作
 - (void)onTouchFinishModel:(JSDTargetModel *)model {
     
-    if (model.finishStatus) {
+    BOOL isfinish = [self.targetManage checkoutFinishStatus:model];
+    if (isfinish) {
         //取消
         UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"确认要取消本次打卡吗？" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
@@ -269,6 +270,16 @@ NSString* const kTargetListChangeNotification = @"targetListChangeNotification";
         _targetManage = [JSDTargetManage sharedInstance];
     }
     return _targetManage;
+}
+
+- (NSString *)yearMonthDay {
+    
+    if (!_yearMonthDay) {
+        NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyy-MM-dd";
+        _yearMonthDay = [formatter stringFromDate:[NSDate date]];
+    }
+    return _yearMonthDay;
 }
 
 @end

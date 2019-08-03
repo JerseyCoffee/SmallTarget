@@ -108,6 +108,7 @@ NSString* const kTargetCalenderHide = @"kTargetCalenderHide";
     self.monthTitleLabel.text = @"本月打卡数量";
     
     [self addChildViewController:self.calendarVC];
+    self.calendarVC.model = self.model;
     [self.calendarView addSubview:self.calendarVC.view];
     [self.calendarVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);

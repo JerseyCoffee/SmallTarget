@@ -74,6 +74,18 @@
 
 @implementation JSDTargetModel
 
-
+- (NSMutableArray<NSMutableDictionary *> *)finishrecordS {
+    
+    if (!_finishrecordS) {
+        
+        JSDCalendarViewModel* calendar = [[JSDCalendarViewModel alloc] init];
+        
+        NSMutableDictionary* dic = @{
+                                     calendar.yearMonthDay: @(NO)
+                                     }.mutableCopy;
+        _finishrecordS = @[dic].mutableCopy;
+    }
+    return _finishrecordS;
+}
 
 @end

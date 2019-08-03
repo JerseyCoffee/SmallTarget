@@ -350,6 +350,11 @@
     } else {
         self.model.finishWeekDays = self.selectedFinishArr;
     }
+    //TODO: 未计算首次设置时间
+    NSDate* date = [NSDate date];
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM-dd"];
+    self.model.monthDay = [formatter stringFromDate:date];
     [self.manage addTargetModel:self.model];
     //保存成功之后刷新界面;
     [self reloadView];

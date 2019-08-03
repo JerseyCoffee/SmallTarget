@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface JSDTargetViewModel : JSDBaseModel
 
 @property (nonatomic, strong) NSMutableArray<JSDTargetModel* >* listArray;
-@property (nonatomic, strong) NSMutableArray<JSDTargetModel* >* currentDaylistArray;
+@property (nonatomic, strong, nullable) NSMutableArray<JSDTargetModel* >* currentDaylistArray;
 - (void)setupCurrentDaylistArray;
 
 @property (strong, nonatomic) JSDCalendarViewModel *calendarManger;
@@ -36,7 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (assign, nonatomic) NSInteger monthNumber; //月累计打卡次数
 @property (assign, nonatomic) NSInteger totalNumber; //总共累计
-@property (strong, nonatomic) NSMutableArray<NSDictionary*> *finishrecordS;
+@property (strong, nonatomic) NSMutableArray<NSMutableDictionary*> *finishrecordS; // 单月为一个组,  Key 为日期 - Value 为状态;
+@property (assign, nonatomic) NSString* monthDay; //首次设置月日 
 
 @end
 

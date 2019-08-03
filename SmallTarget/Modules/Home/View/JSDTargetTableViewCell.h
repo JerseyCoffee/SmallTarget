@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) id<JSDTargetTableViewCellDelegate> delegate;
 
+@property (copy, nonatomic) NSString *yearMonthDay; //年-月-日
+
 @end
 
 NS_ASSUME_NONNULL_END
