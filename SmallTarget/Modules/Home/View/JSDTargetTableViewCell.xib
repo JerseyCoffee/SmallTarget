@@ -34,10 +34,14 @@
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Pp-xN-bpS">
                         <rect key="frame" x="274" y="14" width="36" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="36" id="ey8-CM-SVJ"/>
+                            <constraint firstAttribute="width" constant="36" id="vbI-h7-2OP"/>
+                        </constraints>
                         <state key="normal" image="target_finish_complete"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已打卡 1 天" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3L-DD-Jgj">
-                        <rect key="frame" x="71" y="44" width="86" height="21"/>
+                        <rect key="frame" x="71" y="44" width="193" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -46,6 +50,7 @@
                 <constraints>
                     <constraint firstItem="uF0-YE-CuK" firstAttribute="leading" secondItem="cdH-uj-na3" secondAttribute="trailing" constant="13" id="0Ae-gb-jhj"/>
                     <constraint firstItem="5Pp-xN-bpS" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="IoD-2C-N8o"/>
+                    <constraint firstItem="5Pp-xN-bpS" firstAttribute="leading" secondItem="m3L-DD-Jgj" secondAttribute="trailing" constant="10" id="Jd4-G1-erp"/>
                     <constraint firstItem="cdH-uj-na3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="LuC-7u-ckU"/>
                     <constraint firstItem="cdH-uj-na3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="17" id="TwW-RI-S7W"/>
                     <constraint firstAttribute="trailing" secondItem="5Pp-xN-bpS" secondAttribute="trailing" constant="15" id="gy9-sM-KVT"/>

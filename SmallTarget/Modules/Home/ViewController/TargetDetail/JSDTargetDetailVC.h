@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JSDTargetDetailVC : JSDBaseViewController
 
+@property (strong, nonatomic) JSDTargetModel *model;
+
 @end
 
 NS_ASSUME_NONNULL_END

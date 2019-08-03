@@ -61,7 +61,7 @@
 
 + (UIColor *)jsd_subTitleColor {
     
-    return [UIColor jsd_colorWithHexString:@"#333333"];
+    return [UIColor jsd_colorWithHexString:@"#999999"];
 }
 
 //绘制渐变色颜色的方法

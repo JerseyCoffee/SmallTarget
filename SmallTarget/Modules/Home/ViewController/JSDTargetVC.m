@@ -11,14 +11,18 @@
 #import "JSDTargetTableViewCell.h"
 #import "JSDTargetDetailVC.h"
 #import "JSDCalendarViewModel.h"
+#import "JSDTargetManage.h"
 
 static NSString* const kJSDTargetCell = @"cell";
+NSString* const kTargetListChangeNotification = @"targetListChangeNotification";
 
-@interface JSDTargetVC () <JSDCalenderHeaderViewDelegate, UITableViewDelegate, UITableViewDataSource, MGSwipeTableCellDelegate>
+@interface JSDTargetVC () <JSDCalenderHeaderViewDelegate, UITableViewDelegate, UITableViewDataSource, MGSwipeTableCellDelegate, JSDTargetTableViewCellDelegate>
 
 @property (nonatomic, strong) JSDCalenderHeaderView* headerView;
 @property (nonatomic, strong) UITableView* tableView;
-@property (strong, nonatomic) JSDCalendarViewModel *viewModel;
+@property (strong, nonatomic) JSDCalendarViewModel *calendarViewModel;
+@property (strong, nonatomic) JSDTargetManage *targetManage;
+
 
 @end
 
@@ -84,7 +88,7 @@ static NSString* const kJSDTargetCell = @"cell";
 
 - (void)setupData {
    
-    [self.viewModel updateTarget];
+    [self.calendarViewModel updateTarget];
 }
 
 #pragma mark - 4.UITableViewDataSource and UITableViewDelegate
@@ -92,12 +96,13 @@ static NSString* const kJSDTargetCell = @"cell";
 #pragma mark - UITableView Datasource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 10;
+    return self.targetManage.viewModel.currentDaylistArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -106,7 +111,8 @@ static NSString* const kJSDTargetCell = @"cell";
     if (!cell) {
         cell = [[NSBundle mainBundle] loadNibNamed:@"JSDTargetTableViewCell" owner:nil options:nil].lastObject;
     }
-    
+    JSDTargetModel* model = self.targetManage.viewModel.currentDaylistArray[indexPath.row];
+    [cell setModel:model];
     cell.delegate = self;
     //configure right buttons
     cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"编辑" backgroundColor:[UIColor blueColor]],
@@ -122,23 +128,70 @@ static NSString* const kJSDTargetCell = @"cell";
     return 85;
 }
 
+#pragma mark - JSDTargetTableViewCellDelegate
+
+// TODO: 打卡操作
+- (void)onTouchFinishModel:(JSDTargetModel *)model {
+    
+    if (model.finishStatus) {
+        //取消
+        UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"确认要取消本次打卡吗？" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        @weakify(self)
+        UIAlertAction* confirm = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            @strongify(self)
+            [self.targetManage cancelFnishTargetModel:model];
+            MDCSnackbarManager* manager = [MDCSnackbarManager defaultManager];
+            MDCSnackbarMessage* meesage = [MDCSnackbarMessage messageWithText:@"已取消本次打卡"];
+            [manager showMessage:meesage];
+        }];
+        [alertController addAction:cancelAction];
+        [alertController addAction:confirm];
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+    } else {
+        //打卡成功
+        [self.targetManage finishTargetModel:model];
+        MDCSnackbarManager* manager = [MDCSnackbarManager defaultManager];
+        MDCSnackbarMessage* meesage = [MDCSnackbarMessage messageWithText:@"打卡成功"];
+        [manager showMessage:meesage];
+    }
+}
+
 #pragma mark - MGSwipeTableCellDelegate
 
 - (BOOL)swipeTableCell:(MGSwipeTableCell *)cell tappedButtonAtIndex:(NSInteger)index direction:(MGSwipeDirection)direction fromExpansion:(BOOL)fromExpansion {
     
-//    JSDItemTableCell* itemCell = (JSDItemTableCell *)cell;
-//    NSLog(@"%ld", itemCell.section);
-//    switch (index) {
-//        case 1:{ //删除
-//            [self deleteItemModel: itemCell.viewModel];
-//        }
-//            break;
-//        case 0:{ //编辑
-//            [self editItemModel: itemCell.viewModel];
-//        }
-//        default:
-//            break;
-//    }
+    JSDTargetTableViewCell* jsdCell = (JSDTargetTableViewCell* )cell;
+    JSDTargetModel* model = jsdCell.model;
+    switch (index) {
+        case 1:{ //删除
+            UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"确认要删除掉此目标吗？ 无法进行恢复!" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            @weakify(self)
+            UIAlertAction* confirm = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                @strongify(self)
+                [self.targetManage removeTargetModel:model];
+                MDCSnackbarManager* manager = [MDCSnackbarManager defaultManager];
+                MDCSnackbarMessage* meesage = [MDCSnackbarMessage messageWithText:@"此目标已完成删除!"];
+                [manager showMessage:meesage];
+            }];
+            [alertController addAction:cancelAction];
+            [alertController addAction:confirm];
+            [self presentViewController:alertController animated:YES completion:nil];
+
+        }
+            break;
+        case 0:{ //TODO:编辑
+//            [self.targetManage addt:model];
+            JSDAddTargetVC* editTargetVC = [[JSDAddTargetVC alloc] init];
+            editTargetVC.model = model;
+            editTargetVC.edit = YES;
+            [self.navigationController pushViewController:editTargetVC animated:YES];
+        }
+        default:
+            break;
+    }
     return YES;
 }
 
@@ -147,8 +200,9 @@ static NSString* const kJSDTargetCell = @"cell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    JSDTargetModel* model = self.targetManage.viewModel.currentDaylistArray[indexPath.row];
     JSDTargetDetailVC* targetDetailVC = [[JSDTargetDetailVC alloc] init];
+    targetDetailVC.model = model;
     
     [self.navigationController pushViewController:targetDetailVC animated:YES];
 }
@@ -166,6 +220,13 @@ static NSString* const kJSDTargetCell = @"cell";
 
 - (void)setupNotification {
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(targetListChangeNotification:) name:kTargetListChangeNotification object:nil];
+}
+
+- (void)targetListChangeNotification:(id)sender {
+    
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - 7.GET & SET
@@ -195,12 +256,20 @@ static NSString* const kJSDTargetCell = @"cell";
          return _tableView;
  }
 
-- (JSDCalendarViewModel *)viewModel {
+- (JSDCalendarViewModel *)calendarViewModel {
     
-    if (!_viewModel) {
-        _viewModel = [[JSDCalendarViewModel alloc] init];
+    if (!_calendarViewModel) {
+        _calendarViewModel = [[JSDCalendarViewModel alloc] init];
     }
-    return _viewModel;
+    return _calendarViewModel;
+}
+
+- (JSDTargetManage *)targetManage {
+    
+    if (!_targetManage) {
+        _targetManage = [JSDTargetManage sharedInstance];
+    }
+    return _targetManage;
 }
 
 @end

@@ -10,7 +10,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol JSDTargetTableViewCellDelegate <NSObject>
+
+- (void)onTouchFinishModel:(JSDTargetModel *)model;
+
+@end
+
 @interface JSDTargetTableViewCell : MGSwipeTableCell
+
+@property (strong, nonatomic) JSDTargetModel *model;
+
+@property (weak, nonatomic) id<JSDTargetTableViewCellDelegate> delegate;
 
 @end
 

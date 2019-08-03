@@ -30,7 +30,7 @@
     self.subtitleLabel.font = [UIFont jsd_fontSize:12];
     self.subtitleLabel.textColor = [UIColor jsd_colorWithHexString:@"#999999"];
     
-    
+    [self.finishButton addTarget:self action:@selector(onTouchButton:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)setFrame:(CGRect)frame{
@@ -41,7 +41,6 @@
     frame.size.width -= 20;
     
     [super setFrame:frame];
-    
 }
 
 - (void)layoutSubviews {
@@ -60,6 +59,25 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)setModel:(JSDTargetModel *)model {
+    
+    _model = model;
+    
+    self.targetImageView.image = [UIImage imageNamed:model.imageView];
+    self.titleLabel.text = model.title;
+    self.subtitleLabel.text = model.encourage;
+    NSString* imageName = model.finishStatus ? @"target_finish_complete": @"target_finish_normal";
+    [self.finishButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    
+}
+
+- (void)onTouchButton:(id)sender {
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(onTouchFinishModel:)]) {
+        [self.delegate onTouchFinishModel:self.model];
+    }
 }
 
 @end

@@ -11,8 +11,6 @@
 #import "JSDSelectedImageView.h"
 #import <BRPickerView.h>
 #import <UIViewController+KeyboardAnimation.h>
-#import "JSDTargetViewModel.h"
-#import "JSDTargetManage.h"
 
 @interface JSDAddTargetVC ()
 
@@ -40,9 +38,9 @@
 
 @property (weak, nonatomic) IBOutlet MDCButton *addTargetButton;
 
-@property (nonatomic, strong) JSDTargetModel* model;
 @property (nonatomic, strong) NSMutableArray* selectedFinishArr;
 @property (nonatomic, strong) JSDTargetManage* manage;
+@property (strong, nonatomic) NSArray<UIButton*> *finishButtons;
 
 @end
 
@@ -90,7 +88,11 @@
 
 - (void)setupNavBar {
     
-    self.title = @"添加目标";
+    if (self.edit) {//编辑
+        self.title = @"编辑目标";
+    } else {
+        self.title = @"添加目标";
+    }
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@""
                                                                    style:UIBarButtonItemStyleDone
@@ -131,11 +133,16 @@
     self.finishSubtitleLabel.text = @"/一周中的什么时候";
     
     NSArray* titles = @[@"周一", @"周二", @"周三", @"周四", @"周五", @"周六", @"周日"];
+    //  @"0": @"日", @"1": @"一",    @"2": @"二"    @"3": @"三",    @"4": @"四",    @"5": @"五",    @"6": @"六",
     CGFloat width = (ScreenWidth - 30 - (6 * 5)) / 7;
+    NSMutableArray* btns = NSMutableArray.new;
     for (NSInteger i = 0; i < 7; i++) {
         
         UIButton* btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.tag = i;
+        btn.tag = i + 1;
+        if (i == 6) { //周日转成0 
+            btn.tag = 0;
+        }
         [btn addTarget:self action:@selector(onTouchFinishTimer:) forControlEvents:UIControlEventTouchUpInside];
         [btn.titleLabel setFont:[UIFont jsd_fontSize:13]];
         [btn setTitle:titles[i] forState:UIControlStateNormal];
@@ -149,7 +156,9 @@
         }];
         btn.layer.cornerRadius = width / 2;
         btn.layer.masksToBounds = YES;
+        [btns addObject:btn];
     }
+    self.finishButtons = btns.copy;
     
     self.tipTimerLabel.font = [UIFont jsd_fontSize:19];
     self.tipTimerLabel.textColor = [UIColor jsd_mainBlackColor];
@@ -185,20 +194,57 @@
     [self.addTargetButton setBackgroundColor:[UIColor jsd_mainBlueColor]];
     [self.addTargetButton setTitleFont:[UIFont jsd_fontSize:17] forState:UIControlStateNormal];
     [self.addTargetButton setTintColor:[UIColor whiteColor]];
-    [self.addTargetButton setTitle:@"确定添加目标" forState:UIControlStateNormal];
-//    [self.addTimerButton addTarget:self action:@selector(onTouchConfirmAdd:) forControlEvents:UIControlEventTouchUpInside];
-    NSLog(@"anniu ???%@", self.addTimerButton);
+    if (self.edit) {
+        [self.addTargetButton setTitle:@"确认编辑目标" forState:UIControlStateNormal];
+    } else {
+        [self.addTargetButton setTitle:@"确定添加目标" forState:UIControlStateNormal];
+    }
 }
-
+//清空数据,并且跳转TODO:
 - (void)reloadView {
     
+    self.model = nil;
+    
+    MDCSnackbarManager* manager = [MDCSnackbarManager defaultManager];
+    MDCSnackbarMessage* message = [MDCSnackbarMessage messageWithText:@"目标添加成功"];
+    [manager showMessage:message];
+    
+    self.tabBarController.selectedIndex = 0;
+    self.tabBarController.tabBar.hidden = NO;
+}
+//TODO:
+- (void)editComplection {
+    
+    
+    MDCSnackbarManager* manager = [MDCSnackbarManager defaultManager];
+    MDCSnackbarMessage* message = [MDCSnackbarMessage messageWithText:@"目标编辑成功"];
+    [manager showMessage:message];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - 3.Request Data
 
 - (void)setupData {
     
-    
+    if (self.edit) {
+        self.targetTextField.text = self.model.title;
+        self.sayingTextField.text = self.model.encourage;
+
+        [self.selectedImageView setupLastButton:self.model.imageIndex];
+        for (NSInteger i = 0; i < self.model.finishWeekDays.count; i++) {
+            NSInteger index = self.model.finishWeekDays[i].integerValue;
+            UIButton* btn;
+            if (index == 0) {
+               btn = self.finishButtons[index];
+            } else {
+               btn = self.finishButtons[--index];
+            }
+            btn.selected = YES;
+        }
+        
+        self.selectedFinishArr = self.model.finishWeekDays;
+    }
 }
 
 #pragma mark - 4.UITableViewDataSource and UITableViewDelegate
@@ -222,9 +268,15 @@
 // 点击返回
 - (void)didTapBack:(id)sender {
     
-    self.tabBarController.selectedIndex = 0;
-    
-    self.tabBarController.tabBar.hidden = NO;
+    if (self.edit) {
+        
+        [self.navigationController popViewControllerAnimated: YES];
+    } else {
+        self.tabBarController.selectedIndex = 0;
+        
+        self.tabBarController.tabBar.hidden = NO;
+    }
+
 }
 // 点击收回键盘
 - (void)onTouchTap:(id)sender {
@@ -247,7 +299,19 @@
     
     BOOL havaTitle = JSDIsString(self.targetTextField.text);
     if (havaTitle) {
-        [self savaTargetData];
+        if (self.edit) {
+            [self editTargetData];
+        } else {
+            // 检测是否包含标题
+            if ([self.manage checkContainsTargetTitle:self.targetTextField.text]) {
+                MDCSnackbarManager* manager = [MDCSnackbarManager defaultManager];
+                MDCSnackbarMessage* message = [MDCSnackbarMessage messageWithText:@"当前已包含此目标, 请修改后重新添加"];
+                [manager showMessage:message];
+            } else {
+                [self savaTargetData];
+            }
+        }
+
     } else {
         MDCSnackbarManager* manager = [MDCSnackbarManager defaultManager];
         MDCSnackbarMessage* message = [MDCSnackbarMessage messageWithText:@"请添加标题"];
@@ -261,21 +325,40 @@
     self.model.encourage = self.sayingTextField.text;
     if (self.selectedImageView.lastButton) {
         self.model.imageView = [NSString stringWithFormat:@"target_%ld_selected", self.selectedImageView.lastButton.tag];
+        
     } else {
         self.model.imageView = @"target_0_selected";
     }
+    self.model.imageIndex = self.selectedImageView.lastButton.tag;
     //保存打开时间.
-    if (!self.selectedFinishArr.count) {
-        self.model.finishWeekDays = @[@"0"].mutableCopy;
+    if (!self.selectedFinishArr.count) { // 默认选择星期一;
+        self.model.finishWeekDays = @[@"1"].mutableCopy;
     } else {
         self.model.finishWeekDays = self.selectedFinishArr;
     }
-    
     [self.manage addTargetModel:self.model];
+    //保存成功之后刷新界面;
+    [self reloadView];
+}
+
+- (void)editTargetData {
     
-    JSDTargetViewModel* viewModel = [[JSDTargetViewModel alloc] init];
-    
-    NSLog(@"%@", viewModel.listArray);
+    self.model.title = self.targetTextField.text;
+    self.model.encourage = self.sayingTextField.text;
+    if (self.selectedImageView.lastButton) {
+        self.model.imageView = [NSString stringWithFormat:@"target_%ld_selected", self.selectedImageView.lastButton.tag];
+    } else {
+        self.model.imageView = @"target_0_selected";
+    }
+    self.model.imageIndex = self.selectedImageView.lastButton.tag;
+    //保存打开时间.
+    if (!self.selectedFinishArr.count) { // 默认选择星期一;
+        self.model.finishWeekDays = @[@"1"].mutableCopy;
+    } else {
+        self.model.finishWeekDays = self.selectedFinishArr;
+    }
+    [self.manage editTargetModel:self.model];
+    [self editComplection];
 }
 
 #pragma mark - 6.Private Methods
@@ -294,6 +377,7 @@
         _targetTextFieldController.activeColor = [UIColor blueColor];
         _targetTextFieldController.borderFillColor = [UIColor jsd_colorWithHexString:@"#F5F5F5"];
         _targetTextFieldController.placeholderText = @"输入你要坚持的目标吧";
+//        self.targetTextField.keyboardType = UIKeyboardTypeASCIICapable;
     }
     return _targetTextFieldController;
 }
@@ -329,7 +413,7 @@
 - (JSDTargetManage *)manage {
     
     if (!_manage) {
-        _manage = [[JSDTargetManage alloc] init];
+        _manage = [JSDTargetManage sharedInstance];
     }
     return _manage;
 }

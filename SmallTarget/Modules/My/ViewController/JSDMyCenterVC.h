@@ -8,8 +8,9 @@
 
 #import "MDCCollectionViewController.h"
 
-NS_ASSUME_NONNULL_BEGIN
 
+NS_ASSUME_NONNULL_BEGIN
+extern NSString* const kMyUserDataNotification;
 @interface JSDMyCenterVC : MDCCollectionViewController
 
 @end

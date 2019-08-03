@@ -15,9 +15,13 @@
                 <outlet property="allFinishView" destination="fxa-1p-upe" id="w5b-9K-mdD"/>
                 <outlet property="calendarView" destination="fta-nt-ty3" id="Q63-U8-DoU"/>
                 <outlet property="monthFinishView" destination="x98-5C-qV1" id="BgX-v2-ZmR"/>
+                <outlet property="monthNumberLabel" destination="EwG-4i-6WF" id="ehd-HO-8mp"/>
+                <outlet property="monthTitleLabel" destination="8US-Mk-KEB" id="bZh-hp-TAh"/>
                 <outlet property="sayingLabel" destination="AbF-Y9-nbE" id="bc4-w3-WSm"/>
                 <outlet property="scrollContentView" destination="Rmh-Id-P7N" id="hEE-8D-4U5"/>
                 <outlet property="scrollView" destination="QeR-sl-KMv" id="RDI-uI-cUZ"/>
+                <outlet property="totalNumberLabel" destination="BbB-r2-jD2" id="ljL-yH-kkR"/>
+                <outlet property="totalTitleLabel" destination="INc-PQ-icw" id="nrD-Cz-u1T"/>
                 <outlet property="view" destination="iN0-l3-epB" id="uUL-AX-LYL"/>
             </connections>
         </placeholder>
@@ -33,7 +37,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="“ 坚持就是胜利。”" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbF-Y9-nbE">
-                                    <rect key="frame" x="15" y="25" width="142" height="20.5"/>
+                                    <rect key="frame" x="15" y="25" width="379" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -110,6 +114,7 @@
                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="fta-nt-ty3" secondAttribute="bottom" constant="30" id="qSw-VI-wN0"/>
                                 <constraint firstItem="x98-5C-qV1" firstAttribute="top" secondItem="fxa-1p-upe" secondAttribute="top" id="rrz-Nf-rko"/>
                                 <constraint firstItem="fta-nt-ty3" firstAttribute="leading" secondItem="fxa-1p-upe" secondAttribute="leading" id="z2L-DU-Cw1"/>
+                                <constraint firstAttribute="trailing" secondItem="AbF-Y9-nbE" secondAttribute="trailing" constant="20" id="zpp-PV-D3l"/>
                             </constraints>
                         </view>
                     </subviews>

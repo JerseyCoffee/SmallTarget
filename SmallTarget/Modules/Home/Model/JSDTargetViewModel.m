@@ -32,6 +32,37 @@
     return _listArray;
 }
 
+- (NSMutableArray<JSDTargetModel *> *)currentDaylistArray {
+    
+    if (!_currentDaylistArray) {
+        _currentDaylistArray = self.listArray.copy;
+    }
+    return _currentDaylistArray;
+}
+
+- (void)setupCurrentDaylistArray {
+    
+    if (self.listArray.count) {
+        
+        NSMutableArray* tempArray = NSMutableArray.new;
+        for (NSInteger i = 0; i < self.listArray.count; i++) {
+            JSDTargetModel* model = self.listArray[i];
+            if ([model.finishWeekDays containsObject:@(self.calendarManger.targetWeekDay).stringValue]) {
+                [tempArray addObject:model];
+            }
+        }
+        self.currentDaylistArray = tempArray.mutableCopy;
+    }
+}
+
+- (JSDCalendarViewModel *)calendarManger {
+    
+    if (!_calendarManger) {
+        _calendarManger = [[JSDCalendarViewModel alloc] init];
+        [_calendarManger updateTarget];
+    }
+    return _calendarManger;
+}
 
 @end
 

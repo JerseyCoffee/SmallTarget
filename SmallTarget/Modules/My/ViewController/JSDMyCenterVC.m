@@ -13,6 +13,9 @@
 #import "JSDMyCenterHeaderView.h"
 #import "JSDSettingVC.h"
 #import "JSDAboutUSVC.h"
+#import "JSDMyResource.h"
+
+NSString *const kMyUserDataNotification = @"MyUserDataNotification";
 
 @interface JSDMyCenterVC ()
 
@@ -102,6 +105,8 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)setupData {
     
+    //设置头部
+    [self.headerView setModel: self.viewModel.userData];
 }
 
 #pragma mark - 4.UITableViewDataSource and UITableViewDelegate
@@ -131,17 +136,23 @@ static NSString * const reuseIdentifier = @"Cell";
     
     [super collectionView:collectionView didSelectItemAtIndexPath:indexPath];
     JSDMyCenterModel* model = self.viewModel.listArray[indexPath.item];
-    
-    if (model.route) {
-        UIViewController* historyVC = [NSClassFromString(model.route) new];
-        [self.navigationController pushViewController:historyVC animated:YES];
-    } else {
+    if ([model.route isEqualToString:@"App"]) {
         //TODO: 评分与推荐
         NSString* appId = kJSDAppleID;
         NSString *urlString = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/cn/app/id%@?mt=8&action=write-review", appId];
         if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:urlString]]) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
         }
+    } else if ([model.route isEqualToString:@"tuijian"]) {
+        NSString* appId = kJSDAppleID;
+        NSString *urlString = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/cn/app/id%@?mt=8&action", appId];
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:urlString]]) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+        }
+    }
+    else {
+        UIViewController* historyVC = [NSClassFromString(model.route) new];
+        [self.navigationController pushViewController:historyVC animated:YES];
     }
 }
 
@@ -177,15 +188,25 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)onTouchHeaderView:(id)sender {
     
-    JSDSettingVC* settingVC = [[JSDSettingVC alloc] init];
+//    JSDSettingVC* settingVC = [[JSDSettingVC alloc] init];
+    JSDMyResource* myresourceVC = [[JSDMyResource alloc] init];
+    myresourceVC.model = self.viewModel.userData;
     
-    [self.navigationController pushViewController:settingVC animated:YES];
+    [self.navigationController pushViewController:myresourceVC animated:YES];
 }
 
 #pragma mark - 6.Private Methods
 
 - (void)setupNotification {
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(myUserDataNotification:) name:kMyUserDataNotification object:nil];
+}
+
+- (void)myUserDataNotification:(NSNotification*)notification {
+    
+    [self.viewModel setupUserData];
+    
+    [self.headerView setModel: self.viewModel.userData];
 }
 
 #pragma mark - 7.GET & SET

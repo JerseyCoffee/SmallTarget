@@ -16,6 +16,7 @@
 @property (nonatomic, strong) JSDStackView* centerStackView;
 @property (nonatomic, strong) JSDStackView* bottomStackView;
 @property (nonatomic, strong) NSArray* stackViews;
+@property (nonatomic, strong) NSArray<UIButton* >* buttonS;
 
 @end
 
@@ -90,7 +91,9 @@
             [self.stackViews[i] addArrangedSubview:btn];
         }
     }
+    self.buttonS = btnArray.copy;
 }
+
 
 - (void)onTouchButton:(UIButton *)sender {
 
@@ -108,6 +111,12 @@
         sender.selected = true;
         self.lastButton = sender;
     }
+}
+
+- (void)setupLastButton:(NSInteger)imageIndex {
+    
+    self.lastButton = self.buttonS[imageIndex];
+    self.buttonS[imageIndex].selected = YES;
 }
 
 @end

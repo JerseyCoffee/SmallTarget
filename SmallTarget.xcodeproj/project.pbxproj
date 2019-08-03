@@ -59,6 +59,9 @@
 		55BE126E22F3EC7300423EA8 /* JSDTargetManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BE126D22F3EC7300423EA8 /* JSDTargetManage.m */; };
 		55BE127122F3EC8700423EA8 /* JSDTargetViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BE127022F3EC8700423EA8 /* JSDTargetViewModel.m */; };
 		601E98E822F1C87A008CBE2B /* JSDCalendarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 601E98E722F1C87A008CBE2B /* JSDCalendarVC.m */; };
+		601E98EC22F56DD0008CBE2B /* JSDMyResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 601E98EA22F56DD0008CBE2B /* JSDMyResource.m */; };
+		601E98ED22F56DD0008CBE2B /* JSDMyResource.xib in Resources */ = {isa = PBXBuildFile; fileRef = 601E98EB22F56DD0008CBE2B /* JSDMyResource.xib */; };
+		601E98F022F57924008CBE2B /* JSDPhotoManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 601E98EE22F57924008CBE2B /* JSDPhotoManage.m */; };
 		6D47F23C03E4AF13F09EFAAC /* libPods-SmallTarget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7039A737FF2EB919ECD34346 /* libPods-SmallTarget.a */; };
 /* End PBXBuildFile section */
 
@@ -161,6 +164,11 @@
 		55BE127022F3EC8700423EA8 /* JSDTargetViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDTargetViewModel.m; sourceTree = "<group>"; };
 		601E98E622F1C87A008CBE2B /* JSDCalendarVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDCalendarVC.h; sourceTree = "<group>"; };
 		601E98E722F1C87A008CBE2B /* JSDCalendarVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDCalendarVC.m; sourceTree = "<group>"; };
+		601E98E922F56DD0008CBE2B /* JSDMyResource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDMyResource.h; sourceTree = "<group>"; };
+		601E98EA22F56DD0008CBE2B /* JSDMyResource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDMyResource.m; sourceTree = "<group>"; };
+		601E98EB22F56DD0008CBE2B /* JSDMyResource.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JSDMyResource.xib; sourceTree = "<group>"; };
+		601E98EE22F57924008CBE2B /* JSDPhotoManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDPhotoManage.m; sourceTree = "<group>"; };
+		601E98EF22F57924008CBE2B /* JSDPhotoManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDPhotoManage.h; sourceTree = "<group>"; };
 		7039A737FF2EB919ECD34346 /* libPods-SmallTarget.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmallTarget.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -211,6 +219,8 @@
 		55727B0322F12D7700559B72 /* BaseKit */ = {
 			isa = PBXGroup;
 			children = (
+				601E98EF22F57924008CBE2B /* JSDPhotoManage.h */,
+				601E98EE22F57924008CBE2B /* JSDPhotoManage.m */,
 				55727C9822F2C12800559B72 /* Calender */,
 				55727B5622F153BB00559B72 /* UIView */,
 			);
@@ -525,8 +535,8 @@
 		55727C6322F2A54700559B72 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				55727C6422F2A54700559B72 /* JSDMyCenterViewModel.m */,
 				55727C6522F2A54700559B72 /* JSDMyCenterViewModel.h */,
+				55727C6422F2A54700559B72 /* JSDMyCenterViewModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -549,6 +559,9 @@
 			children = (
 				55727C6B22F2A54700559B72 /* JSDMyCenterVC.h */,
 				55727C6D22F2A54700559B72 /* JSDMyCenterVC.m */,
+				601E98E922F56DD0008CBE2B /* JSDMyResource.h */,
+				601E98EA22F56DD0008CBE2B /* JSDMyResource.m */,
+				601E98EB22F56DD0008CBE2B /* JSDMyResource.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -678,6 +691,7 @@
 				55727C9F22F2D03400559B72 /* right.png in Resources */,
 				55727C9E22F2D03400559B72 /* left.png in Resources */,
 				55727C7E22F2A72800559B72 /* JSDMyCenterHeaderView.xib in Resources */,
+				601E98ED22F56DD0008CBE2B /* JSDMyResource.xib in Resources */,
 				55727C7222F2A54700559B72 /* JSDFeedBacksVC.xib in Resources */,
 				5534DCCA22F125EB006E8ABB /* Assets.xcassets in Resources */,
 				55727C9722F2BCAD00559B72 /* JSDCalenderViewCell.xib in Resources */,
@@ -798,6 +812,7 @@
 				55727B2022F130F600559B72 /* UIFont+JSDTool.m in Sources */,
 				601E98E822F1C87A008CBE2B /* JSDCalendarVC.m in Sources */,
 				55727C8822F2B0D300559B72 /* JSDSettingCell.m in Sources */,
+				601E98EC22F56DD0008CBE2B /* JSDMyResource.m in Sources */,
 				55727B6022F1752200559B72 /* UIButton+JSDTool.m in Sources */,
 				55727B4522F13A5000559B72 /* JSDBaseView.m in Sources */,
 				55727C8C22F2B16E00559B72 /* JSDSwitch.m in Sources */,
@@ -809,6 +824,7 @@
 				55727B3422F1338D00559B72 /* JSDAddTargetButton.m in Sources */,
 				55727B3C22F1353D00559B72 /* UIView+JSDFrame.m in Sources */,
 				55727C7122F2A54700559B72 /* JSDAbountViewModel.m in Sources */,
+				601E98F022F57924008CBE2B /* JSDPhotoManage.m in Sources */,
 				55727B5C22F1620C00559B72 /* JSDSelectedImageView.m in Sources */,
 				55727C5722F29E0A00559B72 /* JSDTargetTableViewCell.m in Sources */,
 				55BE127122F3EC8700423EA8 /* JSDTargetViewModel.m in Sources */,

@@ -29,7 +29,7 @@
                                @"imageName": @"grade",
                                @"title": @"评价鼓励",
                                @"detail": @"",
-                               @"route": @"",
+                               @"route": @"App",
                                @"subTitle": @""
                                },
                            @{
@@ -37,7 +37,7 @@
                                @"title": @"推荐给好友",
                                @"detail": @"",
                                @"route": @"",
-                               @"subTitle": @""
+                               @"subTitle": @"tuijian"
                                },
                           
                            
@@ -47,8 +47,62 @@
     return _listArray;
 }
 
+- (void)setupUserData {
+    
+    NSFileManager* fileManager = [NSFileManager defaultManager];
+    NSString *documentsDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString* userPath = [documentsDirectory stringByAppendingPathComponent:@"user"];
+    if ([fileManager fileExistsAtPath:userPath]) {
+    } else {
+        [fileManager createFileAtPath:userPath contents:nil attributes:nil];
+    }
+    NSData* data = [NSData dataWithContentsOfFile:userPath];
+    if (data) {
+        NSArray* array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        if (array.count) {
+            self.userData = [JSDUserModel mj_objectArrayWithKeyValuesArray:array].firstObject;
+        } else {
+            self.userData = [[JSDUserModel alloc] init];
+        }
+    } else {
+        self.userData = [[JSDUserModel alloc] init];
+    }
+}
+
+- (void)saveUserData {
+    
+    NSString *documentsDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString* userPath = [documentsDirectory stringByAppendingPathComponent:@"user"];
+    NSArray* array = [JSDUserModel mj_keyValuesArrayWithObjectArray: @[self.userData]];
+    NSData* data = array.mj_JSONData;
+    [data writeToFile:userPath atomically:YES];
+
+    //  通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:kMyUserDataNotification object:nil];
+}
+
+- (JSDUserModel *)userData {
+    
+    if (!_userData) {
+        [self setupUserData];
+    }
+    return _userData;
+}
+
 @end
 
+@implementation JSDUserModel
+
+- (NSString *)userName {
+    
+    if (!_userName) {
+        _userName = @"Jersey";
+    }
+    return _userName;
+}
+
+
+@end
 
 @implementation JSDMyCenterModel
 

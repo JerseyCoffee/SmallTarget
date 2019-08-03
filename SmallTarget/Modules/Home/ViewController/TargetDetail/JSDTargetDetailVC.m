@@ -20,6 +20,12 @@
 @property (weak, nonatomic) IBOutlet UIView *monthFinishView;
 @property (weak, nonatomic) IBOutlet UIView *calendarView;
 @property (strong, nonatomic) JSDCalendarVC *calendarVC;
+@property (weak, nonatomic) IBOutlet UILabel *totalTitleLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *totalNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *monthNumberLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *monthTitleLabel;
 
 @end
 
@@ -57,6 +63,9 @@
 - (void)setupNavBar {
     
     self.title = @"目标详情";
+    if (self.model) {
+        self.title = self.model.title;
+    }
 }
 
 - (void)setupView {
@@ -76,12 +85,24 @@
     self.allFinishView.layer.shadowRadius = 6;
     self.allFinishView.layer.cornerRadius = 10;
     
+    self.totalNumberLabel.font = [UIFont jsd_fontSize:21];
+    self.totalNumberLabel.textColor = [UIColor jsd_mainBlackColor];
+    self.totalTitleLabel.font = [UIFont jsd_fontSize:12];
+    self.totalTitleLabel.textColor = [UIColor jsd_subTitleColor];
+    self.totalTitleLabel.text = @"累计打卡";
+    
     self.monthFinishView.backgroundColor = [UIColor whiteColor];
     self.monthFinishView.layer.shadowColor = [UIColor colorWithRed:165/255.0 green:177/255.0 blue:201/255.0 alpha:0.3].CGColor;
     self.monthFinishView.layer.shadowOffset = CGSizeMake(0,1);
     self.monthFinishView.layer.shadowOpacity = 1;
     self.monthFinishView.layer.shadowRadius = 6;
     self.monthFinishView.layer.cornerRadius = 10;
+    
+    self.monthNumberLabel.font = [UIFont jsd_fontSize:21];
+    self.monthNumberLabel.textColor = [UIColor jsd_mainBlackColor];
+    self.monthTitleLabel.font = [UIFont jsd_fontSize:12];
+    self.monthTitleLabel.textColor = [UIColor jsd_subTitleColor];
+    self.monthTitleLabel.text = @"本月打卡";
     
     [self addChildViewController:self.calendarVC];
     [self.calendarView addSubview:self.calendarVC.view];
@@ -101,11 +122,16 @@
 
 - (void)reloadView {
     
+    
 }
 
 #pragma mark - 3.Request Data
 
 - (void)setupData {
+    
+    self.sayingLabel.text = self.model.encourage;
+    self.totalNumberLabel.text = @(self.model.totalNumber).stringValue;
+    self.monthNumberLabel.text = @(self.model.monthNumber).stringValue;
     
 }
 

@@ -1,19 +1,19 @@
 //
-//  JSDMyCenterHeaderView.h
+//  JSDMyResource.h
 //  SmallTarget
 //
-//  Created by Jersey on 2019/8/1.
+//  Created by ada on 2019/8/3.
 //  Copyright © 2019 JerseyCafe. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "JSDBaseViewController.h"
 
 #import "JSDMyCenterViewModel.h"
+#import "JSDPhotoManage.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JSDMyCenterHeaderView : UIView
+@interface JSDMyResource : JSDBaseViewController
 
-@property (weak, nonatomic) IBOutlet UIButton *tapButton;
 @property (strong, nonatomic) JSDUserModel *model;
 
 @end

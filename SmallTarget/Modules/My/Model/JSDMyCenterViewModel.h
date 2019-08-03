@@ -11,10 +11,22 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class JSDMyCenterModel;
+@class JSDUserModel;
 
 @interface JSDMyCenterViewModel : JSDBaseModel
 
 @property (strong, nonatomic) NSArray<JSDMyCenterModel* > *listArray;
+@property (strong, nonatomic) JSDUserModel *userData;
+
+- (void)setupUserData;
+- (void)saveUserData;
+
+@end
+
+@interface JSDUserModel : JSDBaseModel
+
+@property (copy, nonatomic) NSString *userName;
+@property (copy, nonatomic) NSString *userImageView;
 
 @end
 

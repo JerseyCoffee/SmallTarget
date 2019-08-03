@@ -36,4 +36,19 @@
     
 }
 
+- (void)setModel:(JSDUserModel *)model {
+    
+    self.nameLabel.text = model.userName;
+    
+    if (JSDIsString(model.userImageView)) {
+        NSString *documentsDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+        
+        NSString* filePath = [NSString stringWithFormat:@"%@/%@.png", documentsDirectory, model.userImageView];
+        self.headImageView.image = [UIImage imageWithContentsOfFile:filePath];
+    } else {
+        self.headImageView.image = [UIImage imageNamed:@"user"];
+        NSLog(@"使用默认");
+    }
+}
+
 @end

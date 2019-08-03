@@ -9,9 +9,9 @@
 #import <MessageUI/MessageUI.h>
 #import "JSDFeedBacksVC.h"
 
-static NSString* const kFeedBackSussessTip = @"非常感谢您使用助记, 我们会认真查看您反馈的信息, 并且去尝试改进!";
-static NSString* const kFeedBackTip = @"非常感谢您的使用助记, 欢迎您给我们提供任何建议!";
-static NSString* const kFeedBackEmail = @"zexi0625@gmail.com";
+static NSString* const kFeedBackSussessTip = @"非常感谢您使用轻松小目标, 我们会认真查看您反馈的信息, 并且去尝试改进!";
+static NSString* const kFeedBackTip = @"非常感谢您的使用轻松小目标, 欢迎您给我们提供任何建议!";
+static NSString* const kFeedBackEmail = @"jerseycafesupport@163.com";
 static NSString* const kFeedBackEmailTitle = @"App 使用反馈";
 static NSString* const kFeedBackEmailSubTitle = @"Hi. Jersey \n 我在使用 App 过程有发现了问题.";
 

@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface JSDSelectedImageView : UIView
 
 @property (strong, nonatomic, nullable) UIButton *lastButton; //选中的按钮
+- (void)setupLastButton:(NSInteger)imageIndex;
 
 @end
 
