@@ -13,7 +13,7 @@ target 'SmallTarget' do
   pod 'CYLTabBarController', '~>1.24.1'
   pod 'MGSwipeTableCell'
   pod 'AFNetworking', '~>3.2.1'
-  #pod 'JPush', '~>3.1.0'
+  pod 'JPush', '~>3.1.0'
   pod 'FDFullscreenPopGesture', '~>1.1'
   pod 'BRPickerView'
   pod 'UIViewController+KeyboardAnimation', '~> 1.3'

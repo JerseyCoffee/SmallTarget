@@ -32,15 +32,6 @@
                                @"route": @"App",
                                @"subTitle": @""
                                },
-                           @{
-                               @"imageName": @"recommend",
-                               @"title": @"推荐给好友",
-                               @"detail": @"",
-                               @"route": @"",
-                               @"subTitle": @"tuijian"
-                               },
-                          
-                           
                            ];
         _listArray = [JSDMyCenterModel mj_objectArrayWithKeyValuesArray:array];
     }

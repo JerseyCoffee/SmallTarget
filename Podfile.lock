@@ -20,6 +20,9 @@ PODS:
   - CYLTabBarController/Core (1.24.1)
   - FDFullscreenPopGesture (1.1)
   - FSCalendar (2.8.0)
+  - JCore (1.2.6)
+  - JPush (3.1.2):
+    - JCore (~> 1.2.6)
   - JTCalendar (2.2.4)
   - Masonry (1.1.0)
   - MaterialComponents (84.0.0):
@@ -608,6 +611,7 @@ DEPENDENCIES:
   - CYLTabBarController (~> 1.24.1)
   - FDFullscreenPopGesture (~> 1.1)
   - FSCalendar
+  - JPush (~> 3.1.0)
   - JTCalendar (~> 2.0)
   - Masonry (~> 1.1.0)
   - MaterialComponents (~> 84.0.0)
@@ -622,6 +626,8 @@ SPEC REPOS:
     - CYLTabBarController
     - FDFullscreenPopGesture
     - FSCalendar
+    - JCore
+    - JPush
     - JTCalendar
     - Masonry
     - MaterialComponents
@@ -640,6 +646,8 @@ SPEC CHECKSUMS:
   CYLTabBarController: 46fa053a2fb165095e04792431ad91a759bb7f9f
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   FSCalendar: 3a5ed3636e2ba1b83ebebfcf0c2603105a6f5efe
+  JCore: cae516dd2bf1a73b578ce6e1065abd49e709e0f7
+  JPush: d0cead70ba223a6a3b52749899ebda830dfbc49a
   JTCalendar: dce40e7e278b2d9ce747ca45d7fd369f2fda6f57
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MaterialComponents: ea6e7d777ca716eed90e44700be40a91f4c9c4d5
@@ -652,6 +660,6 @@ SPEC CHECKSUMS:
   MotionTransitioning: 23d25edc2f4606efb922403cbac6d81af37aa33a
   "UIViewController+KeyboardAnimation": 4c6000b4a2e450a6105f007f96bb7142aebed220
 
-PODFILE CHECKSUM: a18a0c6daf10c692a13c4216b2232025f67610df
+PODFILE CHECKSUM: 35d5366b7ee901ef8d72eeb16d11d5e8fc77e2b7
 
 COCOAPODS: 1.6.1
